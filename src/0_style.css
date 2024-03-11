@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+  /* 3D rotation*/
+  perspective:1000px;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: all 700ms ease-in;
+  
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+  transform:rotateY(360deg);
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+
+.title {
+    font-size: 90px;
+    align-self: stretch; /* 使h1宽度占满 */
+    text-align: center; /* 文本居中 */
+    margin-top: 10px; /* 或根据需要调整 */
+}
+
+.tooltitext {
+  color:rgb(70, 182, 210);
+  visibility: visible;
+     /* 动画 */
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.tooltitext:hover{
+    visibility:hidden;
+    opacity: 1;
+    transition: 3s;
+}
+
+
+.listButton {
+    position: fixed; /* 固定位置，不随页面滚动 */
+    bottom: 0; /* 定位到页面底部 */
+    left: 0; /* 定位到页面左侧 */
+    width: 100%; /* 让容器宽度占满整个视口的宽度 */
+    text-align: center; /* 将按钮居中对齐 */
+    background-color: #f8f9fa; /* 背景色，根据需要调整 */
+    padding: 10px 0; /* 添加一些内边距 */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* 可选：添加一些阴影效果以提升层次感 */
+}
+
+
+.nightMode{
+    background-color: transparent;
+    margin:0;
+    padding: 4px;
+    background-color: none;
+    border: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index:10;
+}
+
+.icon-bg-white {
+    background-color: white; /* 设置背景颜色为白色 */
+    border-radius: 35%; /* 可选，为图标添加圆角以得到圆形背景效果 */
+    padding: 2px; /* 根据图标的大小调整内边距 */
+
+  }
+  
+  
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
+

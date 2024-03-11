@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="0_style.css" />
+    <title>Expanding Cards</title>
+
+    
+  </head>
+  <body>
+
+    <div class="title">
+        <p>Miku World!</p>
+        <span class="tooltitext">LOVE!</span>
+    </div>
+
+    <div class="buttons">
+        <button class="nightMode">
+        <i class="fa-regular fa-moon"></i>
+        </button>
+    </div>
+
+
+    <div class="container">
+      <div class="panel active" id=panel0 style="background-image: url('0.jpg')">
+        <h3>Explore Hastune Miku </h3>
+      </div>
+      <div class="panel" id=panel1 style="background-image: url('1.jpg')">
+        <h3>Miku 1</h3>
+      </div>
+      <div class="panel" id=panel2 style="background-image: url('2.jpg')">
+        <h3>Miku 2</h3>
+      </div>
+      <div class="panel" id=panel3 style="background-image: url('3.jpg')">
+        <h3>Miku 3</h3>
+      </div>
+      <div class="panel" id=panel4 style="background-image: url('4.jpg')">
+        <h3>Miku 4</h3>
+      </div>
+
+    </div>
+    
+
+    <div class="listButton">
+        <button data-target="panel0"></button>
+        <button data-target="panel1"></button>
+        <button data-target="panel2"></button>
+        <button data-target="panel3"></button>
+        <button data-target="panel4"></button>
+    </div>
+
+    <script src="0_script.js"></script>
+    <script src="https://kit.fontawesome.com/e9d624b506.js" crossorigin="anonymous"></script>
+  </body>
+</html>
