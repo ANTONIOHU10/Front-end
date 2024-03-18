@@ -58,15 +58,15 @@ body {
 
 .title {
     font-size: 90px;
-    align-self: stretch; /* 使h1宽度占满 */
-    text-align: center; /* 文本居中 */
-    margin-top: 10px; /* 或根据需要调整 */
+    align-self: stretch; 
+    text-align: center; 
+    margin-top: 10px; 
 }
 
 .tooltitext {
   color:rgb(70, 182, 210);
   visibility: visible;
-     /* 动画 */
+     
   opacity: 0;
   transition: opacity 0.6s;
 }
@@ -79,14 +79,14 @@ body {
 
 
 .listButton {
-    position: fixed; /* 固定位置，不随页面滚动 */
-    bottom: 0; /* 定位到页面底部 */
-    left: 0; /* 定位到页面左侧 */
-    width: 100%; /* 让容器宽度占满整个视口的宽度 */
-    text-align: center; /* 将按钮居中对齐 */
-    background-color: #f8f9fa; /* 背景色，根据需要调整 */
-    padding: 10px 0; /* 添加一些内边距 */
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* 可选：添加一些阴影效果以提升层次感 */
+    position: fixed; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    text-align: center; 
+    background-color: #f8f9fa;
+    padding: 10px 0; 
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 
@@ -103,9 +103,9 @@ body {
 }
 
 .icon-bg-white {
-    background-color: white; /* 设置背景颜色为白色 */
-    border-radius: 35%; /* 可选，为图标添加圆角以得到圆形背景效果 */
-    padding: 2px; /* 根据图标的大小调整内边距 */
+    background-color: white; 
+    border-radius: 35%; 
+    padding: 2px; 
 
   }
   
