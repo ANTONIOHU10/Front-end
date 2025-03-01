@@ -20,3 +20,11 @@ menuBtn.addEventListener("click", (e) => {
     isOpen ? "ri-close-line" : "ri-menu-3-line"
   );
 });
+
+
+
+navLinks.addEventListener("click", (e) => {
+  //if the navLinks has this class 'open', remove it, otherwise add it
+  navLinks.classList.remove("open");
+  menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+});

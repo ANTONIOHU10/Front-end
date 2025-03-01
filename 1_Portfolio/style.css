@@ -3,9 +3,9 @@
 :root{
     --primary-color: #007bff;
     --primary-color-dark: #0056b3;
-    --secondary-color: #1c1c1cd0;
+    --secondary-color: #0d0d0dd0;
     --white: #fff;
-    --max-width: 1200px;;
+    --max-width: 1200px;
 }
 
 * {
@@ -17,7 +17,7 @@
 .section-container{
     max-width: var(--max-width);
     margin: auto;
-    padding: 5 rem 1 rem;
+    padding: 5rem 1rem;
 }
 
 .btn{
@@ -27,7 +27,7 @@
     font-size: 1rem;
     color: var(--white);
     background-color: var(--primary-color);
-    border-radius:2 rem;
+    border-radius: 2rem;
     border:1px solid var(--primary-color);
     transition: 0.3s;
     cursor:pointer;
@@ -52,6 +52,7 @@ ul{
     list-style: none;
 }
 
+/* using the google font*/
 body{
     font-family: "Poppins", sans-serif;
     background-color: var(--secondary-color);
@@ -67,7 +68,7 @@ nav{
 /*
     Hide the dot image
 */
-.nav_bg-1{
+.nav_bg-1 {
     
     display: none;
 }
@@ -88,7 +89,7 @@ nav{
 }
 
 .nav_menu_btn{
-    font-size: 1.5 rem;
+    font-size: 1.5rem;
     color: var(--white);
     cursor: pointer;
 }
@@ -111,7 +112,7 @@ nav{
     gap:2rem;
     padding:2rem;
     background-color: var(--primary-color);
-    transition:tranform 0.5s;
+    transition: transform 0.5s;
     z-index: -1;
 }
 
@@ -129,5 +130,66 @@ nav{
 }
 
 .nav_links a:hover{
-    color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+
+
+@media(width >768px){
+    nav{
+        position:relative;
+        padding-inline: 1rem;
+        max-width:var(--max-width);
+        margin-inline:auto;
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        gap:1rem;
+    }
+
+    .nav_bg-1{
+        display: flex;
+        max-width: 40rem;
+        position: absolute;
+        left:50%;
+        
+        transform: translateX(-50%);
+        opacity:0.3;
+        z-index: -2;
+    }
+
+    .nav_header{
+        
+        flex:1;
+        padding:0;
+        background-color: transparent;
+    }
+
+    .nav_logo a {
+        font-size: 1.75rem;
+    }
+
+    .nav_logo a span{
+        color: var(--primary-color);
+    }
+    .nav_menu_btn{
+        display: none;
+    }
+
+    .nav_links{
+        position:static;
+        width:fit-content;
+        padding:0;
+        gap:0;
+        flex-direction: row;
+        background-color: transparent;
+        transform: nome !important;
+    }
+
+    .nav_links a{
+        display:inline-block;
+        position:relative;
+        isolation: isolate;
+        padding: 2rem 1rem;
+    }
 }
