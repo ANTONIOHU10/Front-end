@@ -95,6 +95,10 @@ nav{
 }
 
 .nav_links{
+    /*
+        absolute : use the father container as reference,
+        so the bottom:0 = bottom of the nav
+    */
     position:absolute;
     /*
         Bottom: 0; to hide the nav links using the fixed position of the nav
@@ -137,6 +141,7 @@ nav{
 
 @media(width >768px){
     nav{
+        
         position:relative;
         padding-inline: 1rem;
         max-width:var(--max-width);
@@ -148,10 +153,12 @@ nav{
     }
 
     .nav_bg-1{
+        /* Active the dot image*/
         display: flex;
         max-width: 40rem;
         position: absolute;
         left:50%;
+        
         
         transform: translateX(-50%);
         opacity:0.3;
@@ -177,18 +184,41 @@ nav{
     }
 
     .nav_links{
+        /*
+        
+        */
         position:static;
         width:fit-content;
         padding:0;
         gap:0;
         flex-direction: row;
         background-color: transparent;
+        
         transform: nome !important;
     }
 
+    /*its the same use a or li for the links*/
     .nav_links a{
+        /*
+        instead of using display:flexbox in columns, now we use inline-block
+        
+        */
         display:inline-block;
+
+        /*
+            respect the current position of the element
+            so the nav_links will be on top of the nav
+        
+        */
         position:relative;
+
+        /* isolation = to avoid the effect of the parent container 
+            so it has a new stacking context (layer)
+            example: the nav_links will be on top of the nav
+            and not effected by the z-index of the nav, so it has its own z-index
+            and its own layer is the most top layer
+        */
+        
         isolation: isolate;
         padding: 2rem 1rem;
     }
