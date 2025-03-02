@@ -1,3 +1,4 @@
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
@@ -18,7 +19,7 @@
 .section-container{
     max-width: var(--max-width);
     margin: auto;
-    padding: 5rem 1rem;
+    padding: 0rem;
 }
 
 .btn{
@@ -76,6 +77,7 @@ nav{
 
 .nav_header{
     padding: 1rem;
+    padding-bottom:none;
     width:100%;
     display: flex;
     align-items: center;
@@ -149,6 +151,7 @@ header{
 }
 
 header::before{
+    display:none;
     position:absolute;
     content:"";
     height:100%;
@@ -168,7 +171,8 @@ header::before{
 .header_container{
     display:grid;
     gap:2rem;
-    height: 50rem;
+    height: 50.5rem;
+    padding: 0rem;
 }
 
 .header_image img{
@@ -183,6 +187,7 @@ header::before{
     font-weight:400;
     color:var(--white);
     text-align:center;
+    padding-left: 1rem;
 }
 .header_content h1{
     margin-bottom:1rem;
@@ -190,22 +195,25 @@ header::before{
     color:var(--white);
     line-height: 6.5rem;
     text-align:center;
+    padding-left: 1rem;
 }
 
 .header_content p{
     margin-bottom: 2rem;
     color:var(--white);
     text-align:center;
+    padding-left: 1rem;
 }
 
 .header_content p span {
     font-weight:700;
     color: var(--primary-color);
-  
+    
   }
   
 .header_content p span:hover{
     background-color: var(--white);
+    
 }
 .header_content h4 {
     margin-bottom: 0.5rem;
@@ -213,6 +221,7 @@ header::before{
     font-weight: 500;
     color: var(--white);
     text-align: center;
+    padding-left: 1rem;
 }
   
 .socials {
@@ -221,11 +230,13 @@ header::before{
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    padding-left: 1rem;
 }
   
 .socials a {
     font-size: 1.5rem;
     color: var(--white);
+    padding-left: 1rem;
 }
 
 .socials a:hover {
@@ -238,6 +249,7 @@ header::before{
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+    padding-left: 1rem;
 }
 
 .header_btns .btn:nth-child(2) {
@@ -255,10 +267,16 @@ header::before{
     max-width: 40rem;
     left: 50%;
     bottom: -50%;
-    z-index: -1;
+    z-index: 1;
     opacity: 0.3;
     transform: translateX(-50%);
 }
+.menu_container {
+    display:none;
+}
+
+
+
 
 @media(width >768px){
     nav{
@@ -411,8 +429,8 @@ header::before{
     /*header section*/
     header{
         padding-top:0;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .header_container{
@@ -424,8 +442,9 @@ header::before{
         /*
         it divides the grid in 2 columns
         1fr = 1 fraction of the available space
+        1.5fr = 1.5 fraction of the available space
         */
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1.5fr;
         align-items: center;
         isolation:isolate;
     }
@@ -439,11 +458,13 @@ header::before{
         position: absolute;
         width: unset;
         max-width: unset;
+        width: 120rem;
         height:100%;
         right:0;
         top:50%;
         transform:translateY(-50%);
         z-index:-1;
+        padding: none;
 
     }
 
@@ -464,6 +485,68 @@ header::before{
         justify-content: flex-start;
     }
 
+    /* Extra Menu button*/
+    .menu_container {
+        display:block;
+        position: absolute;
+        bottom:10px;
+        right:10px;
+    }
+
+    .menu_container:hover .sub-button {
+        transform: scale(1);
+    }
+
+
+
+    /*
+    
+        Sidebar section
+    */
+    .side_bar_container {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%; /* initially hide the sidebar */
+        width: 10rem;
+        height: 100%;
+        background: var(--primary-color);
+
+        transition: all 0.6s ease-in-out;
+        z-index: 10;
+        box-shadow: -2px 0 15px rgba(0,0,0,0.2);
+        color: var(--white);
+        padding: 1rem;
+        border-radius: 2rem;
+        opacity: 0.9;
+    }
+    
+    .side_bar{
+        position:absolute;
+        top:25%;
+        
+    }
+    
+    .side_bar li{
+        flex-direction: column;
+        /* all the area are clickable*/
+        padding: 0rem 0rem;
+        border-radius: 2rem;
+        justify-content: center;
+    }
+    
+    .side_bar a{
+        color: var(--white);
+        text-align: left;
+        padding: 1.5rem;
+        display: block;
+        width: 100%;
+    }
+    
+    .side_bar_container li:hover{
+        background-color: var(--primary-color-dark);
+    }
+
 }
 
 
@@ -472,5 +555,4 @@ header::before{
         padding-block:6rem;
     }
 }
-
 

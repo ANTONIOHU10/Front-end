@@ -6,9 +6,12 @@
     <title>Portfolio static</title>
     <link rel="stylesheet" href="style.css">
     
+    <!-- Remixicon icons-->
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
+
+    
 
 </head>
 
@@ -46,6 +49,11 @@
             <!-- Header image-->
             <div class="header_image">
                 <img src="assets/header.jpeg" alt="header" />
+
+                <!--Extra Menu button-->
+                <div class="menu_container" >
+                    <div class="btn sidebar_more" id="sidebar_more"> More </div>
+                </div>
             </div>
 
 
@@ -73,7 +81,23 @@
         </div>
         <!-- dot image-->
         <img src="assets/dotnew.png" alt="background" class="header_bg-1" />
+
+
+        
     </header>
+
+    <div class="side_bar_container">
+        <h2>Menu bar</h2>
+        <ul class="side_bar">
+            <li><a href="#">Homepage</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Settinga</a></li>
+        </ul>
+    </div>
+
+    <!--scroll reveal animation effect-->
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
 </body>
 
