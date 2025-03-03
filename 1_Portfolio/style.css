@@ -7,6 +7,7 @@
     --secondary-color: #0d0d0dd0;
     --white: #fff;
     --max-width: 1200px;
+    --grey-color:#888;
 }
 
 * {
@@ -15,6 +16,20 @@
     box-sizing: border-box;
 }
 
+/* Web roll theme*/
+::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--grey-color);
+    border-radius: 2rem;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
 
 /* other sections*/
 .section-container{
