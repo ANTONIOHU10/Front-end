@@ -67,6 +67,10 @@ const scrollRevealOption = {
     delay: 3200,
   });
 
+  ScrollReveal().reveal(".side_bar_container", {
+    ...scrollRevealOption,
+    delay: 3500,
+  });
 
 document.addEventListener('mouseover', (e) => {
     const sidebar = document.querySelector('.side_bar_container');

@@ -276,6 +276,30 @@ header::before{
 }
 
 
+.side_bar_container h2{
+    padding-top: 5rem;
+    text-align: center;
+    color: var(--white);
+}
+.side_bar_container a {
+    color: var(--white);
+   
+}
+
+.side_bar_container li:hover {
+    transform: translateX(1rem);
+    transition: transform 0.3s ease-in-out;
+}
+.side_bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 
 @media(width >768px){
