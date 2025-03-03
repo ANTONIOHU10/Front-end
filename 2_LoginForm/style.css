@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'popins', sans-serif;
+}
+
+:root{
+    --primary-color: #fd7f51;
+    --dark-color:#333;
+    --grey-color:#686868;
+    --white-color:#fff;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background:linear-gradient(45deg, var(--dark-color), var(--grey-color));
+}
+
+
+.container{
+    position:relative;
+    width:45rem;
+    height:40rem;
+    background-color:var(--primary-color);
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--dark-color);
+
+    /*overflow: hidden;*/
+}
+
+.form-box{
+    position: absolute;
+    right:0;
+    width: 50%;
+    height: 100%;
+    /*
+    it can cover also the registration/login container using background
+    
+    */
+    background-color: var(--dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:var(--white-color);
+    text-align: center;
+    padding:1.5rem;
+
+    /*
+    above the toggle box
+    */
+    z-index: 1;
+}
+
+.form-box.register{
+    /*
+    versus the display none, visibility hidden will keep the space
+    */
+    visibility:hidden;
+
+}
+
+form{
+    width:100%;
+}
+
+.container h2{
+    font-size:3rem;
+    margin:-1rem 0;
+}
+
+.input-box{
+    position:relative;
+    padding:0.8rem 0;
+}
+
+.input-box input{
+    width: 100%;
+    /*
+    
+    left padding = 2.5rem, to make space for icon and cover the overflow text
+    */
+    padding:1rem 2.5rem 1rem 1rem;
+    background:var(--white-color);
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color:var(--dark-color);
+    font-weight: 500;
+}
+
+.input-box input::placeholder{
+    color:var(--grey-color);
+    font-weight: 400;
+}
+
+.input-box i{
+    position:absolute;
+    right: 1rem;
+    top:50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color:var(--grey-color);
+    
+}
+
+.forgot-link{
+    margin:0 0 1rem; /*top and bottom margin*/
+}
+
+.forgot-link a{
+    font-size: 1rem;
+    color:var(--white-color);
+    text-decoration: none;
+}
+
+.btn{
+    width: 100%;
+    height:2.2rem;
+    background:var(--primary-color);
+    border-radius: 1rem;
+    box-shadow: 0 0 0.1rem var(--dark-color);/*bottom shadow*/
+    border-top:0.5rem;
+    cursor: pointer;
+    font-size:0.6 rem;
+    color:var(--white-color);
+    font-weight: 600;
+    margin-top: .5rem;
+}
+
+.container p{
+    font-size:0.8rem;
+    margin:1rem 0;
+}
+
+.social-icons a{
+    display: inline-flex;
+    padding:0.4rem;
+    border:0.1rem solid var(--white-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color:var(--white-color);
+    text-decoration: none;
+    margin:0 0.2rem 0.5rem;
+}
+
+.toggle-box{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:var(--dark-color);
+}
+
+.toggle-box::before{
+    content: '';
+    position:absolute;
+    /*
+    the square background color on the left
+    -250 = -300% of the original width + 50% of the toglle panel width
+    so it will cover only the toggle panel
+    from the position -250 -> +300 width = 50 width => cover the toggle panel   
+    */
+    left:-250%;
+    width: 300%;
+    height: 100%;
+    background:var(--primary-color);
+    border-radius: 8rem;
+    /* same level with the toggle panel
+    */
+    z-index:2;
+
+}
+
+.toggle-panel{
+    position:absolute;
+    width: 50%;
+    height:100%;
+    /*
+        background:var(--primary-color);
+    */
+
+    color:var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.toggle-panel p{
+    margin-bottom:1rem;
+}
+
+.toggle-panel .btn{
+    width:5rem;
+    height:2rem;
+    background:transparent;
+    border: 0.1rem solid var(--white-color);
+    box-shadow:none;
+}

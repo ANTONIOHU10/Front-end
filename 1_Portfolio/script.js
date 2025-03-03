@@ -29,7 +29,7 @@ navLinks.addEventListener("click", (e) => {
   menuBtnIcon.setAttribute("class", "ri-menu-3-line");
 });
 
-
+/* another option is using @keyframe */
 const scrollRevealOption = {
     distance: "1rem",
     origin: "bottom",
