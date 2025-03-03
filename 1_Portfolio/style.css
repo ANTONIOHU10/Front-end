@@ -15,6 +15,7 @@
     box-sizing: border-box;
 }
 
+
 /* other sections*/
 .section-container{
     max-width: var(--max-width);
@@ -309,6 +310,9 @@ header::before{
         padding-inline: 1rem;
         max-width:var(--max-width);
         margin-inline:auto;
+        /*
+        what is margin-inline? it is the margin-left and margin-right
+        */
         /* flex: logo on the left, menu on the right*/
         display:flex;
         align-items:center;
@@ -361,8 +365,6 @@ header::before{
         gap:0;
         flex-direction: row;
         background-color: transparent;
-        
-        transform: nome !important;
     }
 
     /*its the same use a or li for the links*/
