@@ -34,6 +34,8 @@
 
         <!--Chatbot Body-->
         <div class="chat-body">
+
+            <!--Bot message-->
             <div class="message bot-message">
                 <img src="asset\bot1.png" class="bot-avatar" width="50" height="50"
                 viewBox="0 0 1024 1024">
@@ -44,13 +46,15 @@
                 </div>
             </div>
 
+            <!--my message-->
             <div class="message user-message">
                 <div class="message-text">
                     My first question.
                 </div>
             </div>
-
-            <div class="message bot-message">
+            
+            <!--Thinking dots-->
+            <div class="message bot-message thinking">
                 <img src="asset\bot1.png" class="bot-avatar" width="50" height="50"
                 viewBox="0 0 1024 1024">
 
@@ -60,6 +64,7 @@
                         <div class="dot"></div>
                         <div class="dot"></div>
                         <div class="dot"></div>
+                        
                     </div>
                 </div>
             </div>
@@ -68,8 +73,7 @@
         <!--Chatbot footer-->
         <div class="chat-footer">
             <form action="#" class="chat-form">
-                <textarea placeholder="Message..." class="message-input">
-                </textarea>
+                <textarea placeholder="Message..." class="message-input" required></textarea>
                 
                 <div class="chat-controls">
                     <button type="button" class="material-symbols-rounded">
@@ -80,7 +84,7 @@
                         attach_file
                     </button>
 
-                    <button type="submit" class="material-symbols-rounded">
+                    <button type="submit" id ="send-message"class="material-symbols-rounded">
                         arrow_upward
                     </button>
 
@@ -90,5 +94,6 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

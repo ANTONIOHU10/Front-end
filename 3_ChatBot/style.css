@@ -16,6 +16,7 @@ Import the google font
     --secondary_color:#de856c;
     --third_color:#ffe5de;
     --dark_color:#303030;
+    --grey_color:#646464;
 }
 
 body{
@@ -27,7 +28,12 @@ body{
 
 }
 
+/*
+main container
+*/
+
 .chatbot-popup{
+    position:relative;
     width:30rem;
     background:var(--white_color);
     overflow: hidden;
@@ -35,6 +41,9 @@ body{
     box-shadow:0 0 0.5rem 0 var(--dark_color);
 }
 
+/*
+header section
+*/
 .chat-header{
     display:flex;
     align-items: center;
@@ -69,7 +78,9 @@ title of the chat bot
     font-weight: 600;
     margin-left: 1rem;
 }
-
+/*
+down arrow
+*/
 .chat-header #close-chatbot{
     border: none;
     color:var(--white_color);
@@ -142,11 +153,15 @@ all messages in the body
     background:var(--third_color);
 }
 
+.chat-body .bot-message.thinking.message-text{
+    padding: 0.2rem 1rem;
+}
+
 /*
 reformatting the message style with border and color
 */
 .chat-body .bot-message .message-text{
-    background: var(--white_color);
+    background: var(--third_color);
     border-radius: 1rem 1rem 0.3rem 1rem;
 }
 
@@ -206,6 +221,105 @@ dotpulse animation
 
 }
 
+/*
+
+the input section
+*/
 .chat-footer{
     position:absolute;
+    bottom:0;
+    width:100%;
+    background:var(--white_color);
+    padding:15px 22px 20px;
+}
+
+/*
+input textarea + controls
+*/
+.chat-footer .chat-form{
+    display:flex;
+    align-items: center;
+    background: var(--white_color);
+    border-radius:3rem;
+    outline: 1px solid var(--grey_color);
+}
+
+/*
+typing -> emphasize the border
+*/
+.chat-footer .chat-form:focus-within{
+    outline: 2px solid var(--grey_color);
+}
+
+/*
+textarea
+*/
+.chat-form .message-input{
+   
+    border:none;
+    outline:none;
+    height:47px;
+    width:100%;
+    font-size:1rem;
+    color: var(--dark_color);
+    border-radius:inherit;
+    padding-left:0.8rem;
+    padding-top:0.8rem;
+    resize:none;
+}
+
+/*
+buttons container
+*/
+.chat-form .chat-controls{
+    display:flex;
+    height:3rem;
+    align-items:center;
+    align-self:flex-end;
+    padding-right: 0.2rem;
+
+}
+
+/*
+buttons
+*/
+
+.chat-form .chat-controls button{
+    height:2rem;
+    width:2rem;
+    border:none;
+    font-size:1,15rem;
+    cursor:pointer;
+    color:var(--primary_color);
+    background:var(--white_color);
+    border-radius: 50%;
+    transition:0.2s ease;
+}
+
+/*
+
+send button
+*/
+.chat-form .chat-controls #send-message{
+    color: var(--white_color);
+    display:none;
+    background: var(--primary_color);
+}
+
+/*display the send button only if the text is valid*/
+/*
+    :valid = select the input valid form element
+    ~ = brother selector, all the element after the valid~
+*/
+.chat-form .message-input:valid~.chat-controls #send-message{
+    display:block;
+}
+
+.chat-form .chat-controls #send-message:hover{
+    background: var(--secondary_color);
+}
+
+.chat-form .chat-controls button:hover{
+    background-color: var(--third_color);
+
 }
