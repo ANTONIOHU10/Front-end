@@ -23,11 +23,11 @@
         <!--Chatbot Header-->
         <div class="chat-header">
             <div class="header-info">
-                <img src="asset\bot1.png" width="50" height="50"
+                <img src="asset\bot1.png" class ="chatbot-logo" width="50" height="50"
                 viewBox="0 0 1024 1024">
                 <h2 class="logo-text">Chatbot</h2>
             </div>
-            <button class="material-symbols-rounded">
+            <button id ="close-chatbot" class="material-symbols-rounded">
                 keyboard_arrow_down</button>
         </div>
 
@@ -35,7 +35,11 @@
         <!--Chatbot Body-->
         <div class="chat-body">
             <div class="message bot-message">
-                <div clas="message-text">Hey there 😊 <br/>
+                <img src="asset\bot1.png" class="bot-avatar" width="50" height="50"
+                viewBox="0 0 1024 1024">
+
+
+                <div class="message-text">Hey there 😊 <br/>
                     How can i help you today?
                 </div>
             </div>
@@ -43,6 +47,20 @@
             <div class="message user-message">
                 <div class="message-text">
                     My first question.
+                </div>
+            </div>
+
+            <div class="message bot-message">
+                <img src="asset\bot1.png" class="bot-avatar" width="50" height="50"
+                viewBox="0 0 1024 1024">
+
+
+                <div class="message-text">
+                    <div class="thinking-indicator">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,15 +72,15 @@
                 </textarea>
                 
                 <div class="chat-controls">
-                    <button class="material-symbols-rounded">
+                    <button type="button" class="material-symbols-rounded">
                         sentiment_satisfied
                     </button>
 
-                    <button class="material-symbols-rounded">
+                    <button type="button" class="material-symbols-rounded">
                         attach_file
                     </button>
 
-                    <button class="material-symbols-rounded">
+                    <button type="submit" class="material-symbols-rounded">
                         arrow_upward
                     </button>
 

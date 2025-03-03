@@ -1,0 +1,211 @@
+/*
+Import the google font
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Inter", sans-serif;
+}
+:root{
+    --white_color:#ffffff;
+    --primary_color:#ff9577;
+    --secondary_color:#de856c;
+    --third_color:#ffe5de;
+    --dark_color:#303030;
+}
+
+body{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    min-height:100vh;
+    background:linear-gradient(var(--primary_color),var(--white_color));
+
+}
+
+.chatbot-popup{
+    width:30rem;
+    background:var(--white_color);
+    overflow: hidden;
+    border-radius:0.5rem;
+    box-shadow:0 0 0.5rem 0 var(--dark_color);
+}
+
+.chat-header{
+    display:flex;
+    align-items: center;
+    background: var(--primary_color);
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
+
+
+.chat-header .header-info{
+    display:flex;
+    gap:0.2 rem;
+    align-items: center;
+}
+
+.header-info .chatbot-logo{
+    height:3rem;
+    width:3rem;
+    padding: 0.4rem;
+    flex-shrink:0;
+    background: var(--white_color);
+    fill: var(--primary_color);
+    border-radius:50%;
+}
+
+/*
+title of the chat bot
+*/
+.header-info .logo-text{
+    color:var(--white_color);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.chat-header #close-chatbot{
+    border: none;
+    color:var(--white_color);
+    height:2rem;
+    width:2rem;
+    font-size:1.9rem;
+    margin-right: -0.8rem;
+    padding-top:0.2rem;
+    cursor:pointer;
+    border-radius:50%;
+    background: none;
+    transition: 0.2 ease;
+}
+
+.chat-header #close-chatbot:hover{
+    background:var(--secondary_color);
+}
+
+/*
+
+the main chat section container
+*/
+.chat-body{
+    padding: 2rem;
+    display: flex;
+    gap:20px;
+    height:25rem;
+    margin-bottom:4rem;
+    overflow-y:auto;
+    flex-direction: column;
+}
+
+/*
+Every message
+*/
+.chat-body .message{
+    display:flex;
+    gap:1.5rem;
+    align-items: center;
+}
+
+/*
+
+change the avatar of the bot for every message sent
+*/
+.chat-body .bot-message .bot-avatar{
+    height:3rem;
+    width:3rem;
+    padding: 0.4rem;
+    fill: var(--white_color);
+    flex-shrink:0;
+    margin-bottom:0.3rem;
+    align-self:flex-end;
+    background: var(--primary_color);
+    border-radius:50%;
+}
+
+
+.chat-body .user-message{
+    flex-direction: column;
+    align-items: flex-end;
+}
+/*
+all messages in the body
+*/
+.chat-body .message .message-text {
+    padding:0.5rem 0.6rem;
+    max-width: 75%;
+    font-size:0.95rem;
+    background:var(--third_color);
+}
+
+/*
+reformatting the message style with border and color
+*/
+.chat-body .bot-message .message-text{
+    background: var(--white_color);
+    border-radius: 1rem 1rem 0.3rem 1rem;
+}
+
+.chat-body .user-message .message-text{
+    color:var(--white_color);
+    background: var(--primary_color);
+    border-radius: 1rem 1rem 0.3rem 1rem;
+}
+
+/*
+bot thinking animation
+*/
+.chat-body .bot-message .thinking-indicator{
+    display: flex;
+    gap: 0.3rem;
+    padding-block: 0.1rem;
+}
+
+.chat-body .bot-message .thinking-indicator .dot{
+    height:0.4rem;
+    width:0.4rem;
+    border-radius:50%;
+    background:var(--primary_color);
+    animation:dotPulse 1.8s ease-in-out infinite;
+    opacity:0.7;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(1){
+    animation-delay: 0.2s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(2){
+    animation-delay: 0.3s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(3){
+    animation-delay: 0.4s;
+}
+/*
+dotpulse animation
+*/
+@keyframes dotPulse{
+    0%, 44%{
+        transform:translateY(0);
+    }
+
+    28%{
+        opacity: 0.4;
+        transform:translateY(-4px);
+    }
+
+    44%{
+        opacity: 0.2;
+    }
+
+    
+
+}
+
+.chat-footer{
+    position:absolute;
+}
