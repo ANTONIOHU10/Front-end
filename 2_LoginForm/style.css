@@ -30,8 +30,8 @@ body{
     background-color:var(--primary-color);
     border-radius: 2rem;
     box-shadow: 0 0 1rem var(--dark-color);
-
-    /*overflow: hidden;*/
+    margin: 1rem;
+    overflow: hidden;
 }
 
 .form-box{
@@ -50,11 +50,23 @@ body{
     color:var(--white-color);
     text-align: center;
     padding:1.5rem;
+    /*
+    the visibility setting cover the title login/register
+    */
+    transition: .6s ease-in-out 1.2s, visibility 0s 1s;
 
     /*
     above the toggle box
     */
     z-index: 1;
+}
+
+/*
+    move from tight to the left for the 50%
+    of the main container
+*/
+.container.active .form-box{
+    right:50%;
 }
 
 .form-box.register{
@@ -64,6 +76,12 @@ body{
     visibility:hidden;
 
 }
+
+.container.active .form-box.register{
+    visibility:visible;
+}
+
+
 
 form{
     width:100%;
@@ -139,6 +157,11 @@ form{
     margin:1rem 0;
 }
 
+.social-icons{
+    display:flex;
+    justify-content: center;
+}
+
 .social-icons a{
     display: inline-flex;
     padding:0.4rem;
@@ -173,17 +196,27 @@ form{
     border-radius: 8rem;
     /* same level with the toggle panel
     */
+    transition:1.8s ease-in-out;
     z-index:2;
 
+}
+
+/*
+the container active will move the toggle box from left of the main container to the right for 50% of the width
+
+if .container.active => the subclass .toggle-box::before will move to the right
+
+and the toggle box having z-indx = 2, will cover the form box
+and having z-index = 2, the same of the register toggle panel, the text will be visible
+*/
+.container.active .toggle-box::before{
+    left:50%;
 }
 
 .toggle-panel{
     position:absolute;
     width: 50%;
     height:100%;
-    /*
-        background:var(--primary-color);
-    */
 
     color:var(--white-color);
     display: flex;
@@ -191,6 +224,41 @@ form{
     justify-content: center;
     align-items: center;
     z-index: 2;
+}
+
+/*
+the left toggle panel
+
+move teh left toggle from left:0 to left:-50%
+so it to the left for the 50%
+and we cannot see the "Welcom!" section
+*/
+.toggle-panel.toggle-left{
+    left:0;/* on the left of the main container*/
+    transition-duration: 0.6s;
+}
+
+.container.active .toggle-panel.toggle-left{
+    left:-50%;/*
+    initial position
+    it can be also 100%, anyway it will return to left:0*/
+    transition-delay:1.2s;
+}
+
+/*
+the right toggle panel
+*/
+.toggle-panel.toggle-right{
+    /*
+    initial position:
+    it can be any position,anyway it will return to right:0
+    */
+    right:-50%;
+    transition-duration:.6s;
+}
+.container.active .toggle-panel.toggle-right{
+    right:0;
+    transition-delay:1.8s;
 }
 
 .toggle-panel p{
@@ -203,4 +271,81 @@ form{
     background:transparent;
     border: 0.1rem solid var(--white-color);
     box-shadow:none;
+}
+
+
+@media screen and (max-width:650px){
+    .container{
+        height:calc(100vh-1rem);
+    }
+
+    .form-box{
+        bottom:0;
+        width: 100%;
+        height:70%;
+    }
+
+    .container.active .form-box{
+        right:0;
+        bottom:30%;
+    }
+
+    .toggle-box::before{
+        left:0;
+        top:-270%;
+        width:100%;
+        height:300%;
+        border-radius: 2rem;
+    }
+
+    .container.active .toggle-box::before{
+        left:0;
+        top: 70%;
+
+    }
+    .toggle-panel{
+        width:100%;
+        height:30%;
+
+    }
+    /*
+        for default it's hidden on the top of the top border
+    */
+    .toggle-panel.toggle-left{
+        top:0;
+    }
+
+    /*
+    once active, pull from the upper for 30% 
+    */
+
+    .container.active .toggle-panel.toggle-left{
+        left: 0;
+        top: -30%;
+    }
+    
+    /*
+    
+    for default its hide behide the bottom border
+    */
+    .toggle-panel.toggle-right{
+        right:0;
+        bottom:-30%;
+    }
+    /*
+    if active -> display on the bottom border
+    */
+    .container.active .toggle-panel.toggle-right{
+        bottom:0;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .form-box{
+        padding: 1rem;
+    }
+
+    .toggle-panel h1{
+        font-size: 1rem;
+    }
 }
