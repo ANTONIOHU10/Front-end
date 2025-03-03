@@ -31,7 +31,7 @@ navLinks.addEventListener("click", (e) => {
 
 
 const scrollRevealOption = {
-    distance: "50px",
+    distance: "1rem",
     origin: "bottom",
     duration: 1000,
   };
