@@ -20,9 +20,13 @@ Import the google font
 }
 
 body{
+    /*
     display: flex;
     align-items:center;
     justify-content: center;
+    
+    */
+
     min-height:100vh;
     background:linear-gradient(var(--primary_color),var(--white_color));
 
@@ -33,13 +37,88 @@ main container
 */
 
 .chatbot-popup{
-    position:relative;
+    position:fixed;
+    right:35px;
+    bottom:90px;
+    width:420px;
     width:30rem;
     background:var(--white_color);
     overflow: hidden;
     border-radius:0.5rem;
+    opacity:0;
+    /*
+    when hidden, this component will not react with mouse event
+    */
+    pointer-events: none;
     box-shadow:0 0 0.5rem 0 var(--dark_color);
+
+    /*
+    Effect for the toggling
+    */
+    transition: all 0.2 ease;
+    transform: scale(0.2);
+    transform-origin: bottom right;
+
 }
+
+/*
+when the chatbot is shown
+*/
+body.show-chatbot .chatbot-popup{
+    opacity:1;
+    pointer-events:auto; /* the pointer-event was none, now we active it*/
+    transform:scale(1); /* scale = normal size*/
+}
+
+body.show-chatbot #chatbot-toggler{
+    transform: rotate(90deg);
+}
+
+body.show-chatbot #chatbot-toggler span:first-child,
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}
+/*
+    show the X icon of the toggle
+*/
+body.show-chatbot #chatbot-toggler span:last-child{
+    opacity:1;
+}
+
+/*
+button to toggle the chatbot
+*/
+#chatbot-toggler{
+    position:fixed;
+    bottom:30px;
+    right:35px;
+    border:none;
+    height:50px;
+    width:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border-radius: 50%;
+    background-color: var(--primary_color);
+    /*
+    for the toggle effect
+    */
+    transition: all 0.2s ease;
+}
+
+#chatbot-toggler span{
+    color:var(--white_color);
+    position:absolute;
+}
+
+/*
+    hide the toggle's center X icon
+*/
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}
+
 
 /*
 header section
@@ -269,6 +348,14 @@ textarea
     padding-left:0.8rem;
     padding-top:0.8rem;
     resize:none;
+    max-height: 180px;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+}
+
+.chat-from .message-input:hover{
+    scrollbar-color: var(--third_color) transparent;
 }
 
 /*
@@ -421,26 +508,46 @@ body.show-emoji-picker em-emoji-picker{
     visibility: visible;
 }
 
-#chatbot-toggler{
-    position:fixed;
-    bottom:30px;
-    right:35px;
-    border:none;
-    height:50px;
-    width:50px;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    cursor:pointer;
-    border-radius: 50%;
-    background-color: var(--primary_color);
-}
 
-#chatbot-toggler span{
-    color:var(--white_color);
-    position:absolute;
-}
 
-#chatbot-toggler span:last-child{
-    opacity: 0;
+
+/*
+
+Responsive UI
+
+when width < = 520 px
+*/
+
+@media (max-width: 520px){
+    #chatbot-toggler{
+        right:20px;
+        bottom:20px;
+    }
+
+    .chatbot-popup{
+        right:0;
+        bottom: 0;
+        height:100%;
+        border-radius: 0;
+        width:100%;
+    }
+
+    .chatbot-popup .chat-header{
+        padding: 12px 15px;
+    }
+
+    .chat-body{
+        height:calc(90%-55px);
+        padding:25px 15px;
+    }
+
+    .chat-footer{
+        padding: 10px 15px 15px;
+    }
+
+
+    .chat-form .file-upload-wrapper.file-uploaded #file-cancel{
+        opacity: 0;
+    }
+
 }

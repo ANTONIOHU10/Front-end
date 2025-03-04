@@ -5,6 +5,11 @@ const fileInput = document.querySelector("#file-input");
 const fileUploadWrapper = document.querySelector(".file-upload-wrapper");
 const fileCancelButton = document.querySelector("#file-cancel");
 
+const chatbotToggler = document.querySelector("#chatbot-toggler");
+const closeChatbot = document.querySelector("#close-chatbot");
+
+const chatHistory=[];
+
 // from google ai studio
 const API_KEY ="AIzaSyDy1qMqWrv7OEdq4sde7KHXpxi6AiQ9qsI";
 
@@ -53,6 +58,8 @@ const handleOutgoingMessage = (e) =>{
     //and the content of the file is saved into the object, removing the class will hide the image on the wrapper
     fileUploadWrapper.classList.remove("file-uploaded");
 
+    //trigger manually the event, so it will reset the input textarea height
+    messageInput.dispatchEvent(new Event ("input"));
     //create structure
 
     //if userData.file.data exists -> insert <img> and insert its type and base64 code, otherwise none ""
@@ -109,6 +116,8 @@ const handleOutgoingMessage = (e) =>{
     },600);
 }
 
+/* Textarea
+*/
 messageInput.addEventListener("keydown",(e)=>{
     /**
      * value = the message
@@ -116,9 +125,28 @@ messageInput.addEventListener("keydown",(e)=>{
      */
     const userMessage = e.target.value.trim();
     // && -> and the message is not null
-    if(e.key === "Enter" && userMessage){
+    // && not pressing shift, so it will send only when is not pressed shift + Enter
+    // and it's not responsive to the mobile device
+    if(e.key === "Enter" && userMessage && !e.shiftKey && window.innerWidth > 768){
         handleOutgoingMessage(e);
     }
+});
+
+
+// dynamically modify the hight using the text height
+
+const innitialInputHeight = messageInput.scrollHeight;
+
+messageInput.addEventListener("input", ()=> {
+    // initial the height
+    messageInput.style.height =`${innitialInputHeight}px`;
+
+    //uguale to the message height
+    messageInput.style.height = `${messageInput.scrollHeight}px`;
+
+    //the more tall is the input textarea, more radius it is
+    document.querySelector(".chat-form").style.borderRadius =
+         messageInput.scrollHeight > innitialInputHeight ? "15px" : "32px"
 });
 
 
@@ -132,26 +160,30 @@ const generateBotResponse = async (incomingMessageDiv) =>{
     //because user-message = parent, message-text = child element
     const messageElement = incomingMessageDiv.querySelector(".message-text");
 
+    //save this message in the history list
+    chatHistory.push(
+        {
+            role:"user",    
+            parts:[
+                //text message
+                {text:userData.message},
+                //file contenet , follows the standard of GEMINI
+                //if the file exists: -> create a list, and using ... it can be elapsed by parts
+
+                // true = [{inline_data: userData.file}]
+                // false = [] empty array
+                ...(userData.file.data ?[{inline_data: userData.file}]:[]
+                )
+            ]
+        }
+    );
+
     //the request format = https://ai.google.dev/gemini-api/docs/text-generation?lang=rest
     const requesOptions = {
         method: "POST",
         headers:{"Content-Type": "application/json"},
         body:JSON.stringify({
-            contents: [{
-                
-                parts:[
-                    //text message
-                    {text:userData.message},
-
-                    //file contenet , follows the standard of GEMINI
-                    //if the file exists: -> create a list, and using ... it can be elapsed by parts
-
-                    // true = [{inline_data: userData.file}]
-                    // false = [] empty array
-                    ...(userData.file.data ?[{inline_data: userData.file}]:[]
-                    )
-                ]
-            }]
+            contents: chatHistory
         })
 
     }
@@ -172,6 +204,13 @@ const generateBotResponse = async (incomingMessageDiv) =>{
 
         //put the response text into the HTML elmenet: to display it
         messageElement.innerText = apiResponseText;
+
+
+        //Add bot response to chat history
+        chatHistory.push({
+            role:"model",
+            parts:[{text: apiResponseText}]
+        });
     } catch (error){
         console.log(error);
         //if the KPI KEY is not correct or the server is down
@@ -270,5 +309,15 @@ const picker = new EmojiMart.Picker({
     }
 });
 
-//added the new picker to the structure
+//added the new picker to the structure = not hidden
 document.querySelector(".chat-form").appendChild(picker);
+
+
+//add the chatbot class to the body
+chatbotToggler.addEventListener("click",()=>document.body.classList.toggle(
+    "show-chatbot"
+));
+
+
+//close chatbot button
+closeChatbot.addEventListener("click",()=> document.body.classList.remove("show-chatbot"));
