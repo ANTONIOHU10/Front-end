@@ -20,6 +20,7 @@
 
 <body>
     <div class="chatbot-popup">
+
         <!--Chatbot Header-->
         <div class="chat-header">
             <div class="header-info">
@@ -44,34 +45,6 @@
                     How can i help you today?
                 </div>
             </div>
-
-           <!--
-
-           test
-            --my message--
-            <div class="message user-message">
-                <div class="message-text">
-                    My first question.
-                </div>
-            </div>
-            
-            --Thinking dots--
-            <div class="message bot-message thinking">
-                <img src="asset\bot1.png" class="bot-avatar" width="50" height="50">
-
-
-                <div class="message-text">
-                    <div class="thinking-indicator">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        
-                    </div>
-                </div>
-            </div> 
-           
-           
-           -->
         </div>
 
         <!--Chatbot footer-->
@@ -83,10 +56,22 @@
                     <button type="button" class="material-symbols-rounded">
                         sentiment_satisfied
                     </button>
+                    
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
 
-                    <button type="button" class="material-symbols-rounded">
-                        attach_file
-                    </button>
+                        <!--preview of the uploaded image-->
+                        <img src="#">
+
+                        <button type="button" id="file-upload" class="material-symbols-rounded">
+                            attach_file
+                        </button>
+
+                        <button type="button" id="file-cancel" class="material-symbols-rounded">
+                            Close
+                        </button>
+                    </div>
+
 
                     <button type="submit" id ="send-message"class="material-symbols-rounded">
                         arrow_upward

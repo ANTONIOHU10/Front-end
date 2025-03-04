@@ -111,6 +111,8 @@ the main chat section container
     margin-bottom:4rem;
     overflow-y:auto;
     flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--third_color) transparent;
 }
 
 /*
@@ -323,3 +325,78 @@ send button
     background-color: var(--third_color);
 
 }
+
+
+/*
+Resizing the attachment size
+*/
+.chat-body .user-message .attachment{
+    width:50%;
+    margin-top: -7px;
+    border-radius:13px 3px 13px 13px;
+}
+
+
+/*
+this space is used for: 4 element: 
+upload button:
+upload input:
+file upload wrapper (preview):
+upload cancel
+*/
+.chat-form .file-upload-wrapper{
+    height:35px;
+    width:35px;
+    position: relative;
+}
+
+/*
+using the same space
+*/
+.chat-form .file-upload-wrapper :where(img,button){
+    position: absolute;
+}
+
+.chat-form .file-upload-wrapper img{
+    width: 100%;
+    height:100%;
+
+    /*it's on the upload button*/
+    object-fit:cover;
+    border-radius: 50%;
+}
+
+/*
+change the cancel button color
+*/
+.chat-form .file-upload-wrapper #file-cancel {
+    color:#ff0000;
+    background:var(--white_color);
+}
+
+.chat-form .file-upload-wrapper :where(img, #file-cancel),
+.chat-form .file-upload-wrapper.file-uploaded #file-upload {
+    display:none;
+}
+
+/*
+the file-uploaded class is added only through the js code
+
+display the wrapper and the cancel button
+*/
+
+/*
+selecting class without space = .chat-form.file-upload-wrapper.file-uploaded img
+    -> having all these classes
+
+selecting class with space = .chat-form .file-upload-wrapper.file-uploaded img
+    -> uder the .chat-form  select the structures with all the .file-upload-wrapper.file-uploaded img
+*/
+
+.chat-form .file-upload-wrapper.file-uploaded img,
+.chat-form .file-upload-wrapper.file-uploaded:hover #file-cancel{
+    display: block;
+}
+
+
+
