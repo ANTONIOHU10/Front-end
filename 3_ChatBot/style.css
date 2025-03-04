@@ -240,6 +240,7 @@ input textarea + controls
 */
 .chat-footer .chat-form{
     display:flex;
+    position: relative;
     align-items: center;
     background: var(--white_color);
     border-radius:3rem;
@@ -400,3 +401,46 @@ selecting class with space = .chat-form .file-upload-wrapper.file-uploaded img
 
 
 
+/*emoji picker styling*/
+
+em-emoji-picker{
+    position:absolute;
+    left:50%;
+    top:-337px;
+    width:100%;
+    max-width: 350px;
+    max-height: 330px;
+    visibility:hidden;
+    transform:translateX(-50%);
+}
+
+/*
+the extended picker 
+*/
+body.show-emoji-picker em-emoji-picker{
+    visibility: visible;
+}
+
+#chatbot-toggler{
+    position:fixed;
+    bottom:30px;
+    right:35px;
+    border:none;
+    height:50px;
+    width:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border-radius: 50%;
+    background-color: var(--primary_color);
+}
+
+#chatbot-toggler span{
+    color:var(--white_color);
+    position:absolute;
+}
+
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}

@@ -234,3 +234,41 @@ fileCancelButton.addEventListener("click",()=>{
     //remove the class to avoid the restyling
     fileUploadWrapper.classList.remove("file-uploaded");
 });
+
+
+
+//initialize the emoji picker
+const picker = new EmojiMart.Picker({
+    //properties from the homepage
+    theme:"light",
+    skinTonePosition:"none",
+    previewPositioni:"none",
+
+    onEmojiSelect: (emoji) =>{
+        //create a new object decomposing from the messageInput
+        //
+        // 1. If selected a part of string of the messageInput
+        // start, end = start and end of the message
+        const {selectionStart: start, selectionEnd:end} = messageInput;
+
+        // 2. Set the emoji into the selected range of the string (substitute)
+        // 2.1 if no start is selected -> for default select the end, end inserting
+        messageInput.setRangeText(emoji.native,start, end, "end");
+
+        //keep focus of the cursor in this position
+        messageInput.focus(); 
+    },
+    
+    // on click action
+    onClickOutside:(e) => {
+        if(e.target.id === "emoji-picker"){
+            /** toggle = if not added -> add */
+            document.body.classList.toggle("show-emoji-picker");
+        } else{
+            document.body.classList.remove("show-emoji-picker");
+        }
+    }
+});
+
+//added the new picker to the structure
+document.querySelector(".chat-form").appendChild(picker);

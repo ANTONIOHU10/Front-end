@@ -19,6 +19,14 @@
 </head>
 
 <body>
+
+    <!--Tool bar-->
+    <button id="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+
+
     <div class="chatbot-popup">
 
         <!--Chatbot Header-->
@@ -53,7 +61,7 @@
                 <textarea placeholder="Message..." class="message-input" required></textarea>
                 
                 <div class="chat-controls">
-                    <button type="button" class="material-symbols-rounded">
+                    <button type="button" id="emoji-picker" class="material-symbols-rounded">
                         sentiment_satisfied
                     </button>
                     
@@ -82,7 +90,8 @@
             </form>
         </div>
     </div>
-
+    <!--Linking the emoji mart-->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
