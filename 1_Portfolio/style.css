@@ -1,20 +1,51 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+/*
+Import the google font
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root{
     --primary-color: #007bff;
     --primary-color-dark: #0056b3;
     --secondary-color: #0d0d0dd0;
+    --third-color:#e0eaf5;
     --white: #fff;
     --max-width: 1200px;
     --grey-color:#888;
+    
+    /* for chatbot */
+    --white_color:#ffffff;
+    --primary_color:#ff9577;
+    --secondary_color:#de856c;
+    --third_color:#ffe5de;
+    --dark_color:#303030;
+    --grey_color:#646464;
 }
+
+
+
 
 * {
     padding: 0 ;
     margin: 0;
     box-sizing: border-box;
 }
+
+
+body{
+    /*
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+    */
+
+    min-height:100vh;
+}
+
 
 /* Web roll theme*/
 ::-webkit-scrollbar {
@@ -555,7 +586,7 @@ header::before{
 
         transition: all 0.6s ease-in-out;
         z-index: 10;
-        box-shadow: -2px 0 15px rgba(0,0,0,0.2);
+        box-shadow: -2px 0 15px var(--dark_color);
         color: var(--white);
         padding: 1rem;
         border-radius: 2rem;
@@ -597,3 +628,532 @@ header::before{
     }
 }
 
+
+
+/*
+
+Chatbot
+
+*/
+
+.chatbot-popup{
+    position:fixed;
+    right:35px;
+    bottom:160px;
+    width:420px;
+    width:30rem;
+    background:var(--white_color);
+    overflow: hidden;
+    border-radius:0.5rem;
+    opacity:0;
+    /*
+    when hidden, this component will not react with mouse event
+    */
+    pointer-events: none;
+    box-shadow:0 0 0.5rem 0 var(--dark_color);
+
+    /*
+    Effect for the toggling
+    */
+    transition: all 0.2 ease;
+    transform: scale(0.2);
+    transform-origin: bottom right;
+
+}
+
+/*
+when the chatbot is shown
+*/
+body.show-chatbot .chatbot-popup{
+    opacity:1;
+    pointer-events:auto; /* the pointer-event was none, now we active it*/
+    transform:scale(1); /* scale = normal size*/
+}
+
+body.show-chatbot #chatbot-toggler{
+    transform: rotate(90deg);
+}
+
+
+#chatbot-toggler:hover{
+    background-color: var(--primary-color-dark);
+}
+
+body.show-chatbot #chatbot-toggler span:first-child,
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}
+/*
+    show the X icon of the toggle
+*/
+body.show-chatbot #chatbot-toggler span:last-child{
+    opacity:1;
+}
+
+/*
+button to toggle the chatbot
+*/
+#chatbot-toggler{
+    position:fixed;
+    bottom:90px;
+    right:35px;
+    border:none;
+    height:50px;
+    width:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    /*
+    for the toggle effect
+    */
+    transition: all 0.2s ease;
+}
+
+#chatbot-toggler span{
+    color:var(--white_color);
+    position:absolute;
+}
+
+/*
+    hide the toggle's center X icon
+*/
+#chatbot-toggler span:last-child{
+    opacity: 0;
+}
+
+
+/*
+header section
+*/
+.chat-header{
+    display:flex;
+    align-items: center;
+    background: var(--primary-color);
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
+
+
+.chat-header .header-info{
+    display:flex;
+    gap:0.2 rem;
+    align-items: center;
+}
+
+.header-info .chatbot-logo{
+    height:3rem;
+    width:3rem;
+    padding: 0.4rem;
+    flex-shrink:0;
+    background: var(--white_color);
+    fill: var(--primary-color);
+    border-radius:50%;
+}
+
+/*
+title of the chat bot
+*/
+.header-info .logo-text{
+    color:var(--white_color);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+/*
+down arrow
+*/
+.chat-header #close-chatbot{
+    border: none;
+    color:var(--white_color);
+    height:2rem;
+    width:2rem;
+    font-size:1.9rem;
+    margin-right: -0.8rem;
+    padding-top:0.2rem;
+    cursor:pointer;
+    border-radius:50%;
+    background: none;
+    transition: 0.2 ease;
+}
+
+.chat-header #close-chatbot:hover{
+    background:var(--secondary-color);
+}
+
+/*
+
+the main chat section container
+*/
+.chat-body{
+    padding: 2rem;
+    display: flex;
+    gap:20px;
+    height:25rem;
+    margin-bottom:4rem;
+    overflow-y:auto;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--third-color) transparent;
+}
+
+/*
+Every message
+*/
+.chat-body .message{
+    display:flex;
+    gap:1.5rem;
+    align-items: center;
+}
+
+/*
+
+change the avatar of the bot for every message sent
+*/
+.chat-body .bot-message .bot-avatar{
+    height:3rem;
+    width:3rem;
+    padding: 0.4rem;
+    fill: var(--white_color);
+    flex-shrink:0;
+    margin-bottom:0.3rem;
+    align-self:flex-end;
+    background: var(--primary-color);
+    border-radius:50%;
+}
+
+
+.chat-body .user-message{
+    flex-direction: column;
+    align-items: flex-end;
+}
+/*
+all messages in the body
+*/
+.chat-body .message .message-text {
+    padding:0.5rem 0.6rem;
+    max-width: 75%;
+    font-size:0.95rem;
+    background:var(--third-color);
+}
+
+.chat-body .bot-message.thinking.message-text{
+    padding: 0.2rem 1rem;
+}
+
+/*
+reformatting the message style with border and color
+*/
+.chat-body .bot-message .message-text{
+    background: var(--third-color);
+    border-radius: 1rem 1rem 0.3rem 1rem;
+}
+
+.chat-body .user-message .message-text{
+    color:var(--white_color);
+    background: var(--primary-color);
+    border-radius: 1rem 1rem 0.3rem 1rem;
+}
+
+/*
+bot thinking animation
+*/
+.chat-body .bot-message .thinking-indicator{
+    display: flex;
+    gap: 0.3rem;
+    padding-block: 0.1rem;
+}
+
+.chat-body .bot-message .thinking-indicator .dot{
+    height:0.4rem;
+    width:0.4rem;
+    border-radius:50%;
+    background:var(--primary-color);
+    animation:dotPulse 1.8s ease-in-out infinite;
+    opacity:0.7;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(1){
+    animation-delay: 0.2s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(2){
+    animation-delay: 0.3s;
+}
+
+.chat-body .bot-message .thinking-indicator .dot:nth-child(3){
+    animation-delay: 0.4s;
+}
+/*
+dotpulse animation
+*/
+@keyframes dotPulse{
+    0%, 44%{
+        transform:translateY(0);
+    }
+
+    28%{
+        opacity: 0.4;
+        transform:translateY(-4px);
+    }
+
+    44%{
+        opacity: 0.2;
+    }
+
+    
+
+}
+
+/*
+
+the input section
+*/
+.chat-footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:var(--white_color);
+    padding:15px 22px 20px;
+}
+
+/*
+input textarea + controls
+*/
+.chat-footer .chat-form{
+    display:flex;
+    position: relative;
+    align-items: center;
+    background: var(--white_color);
+    border-radius:3rem;
+    outline: 1px solid var(--grey_color);
+}
+
+/*
+typing -> emphasize the border
+*/
+.chat-footer .chat-form:focus-within{
+    outline: 2px solid var(--grey_color);
+}
+
+/*
+textarea
+*/
+.chat-form .message-input{
+   
+    border:none;
+    outline:none;
+    height:47px;
+    width:100%;
+    font-size:1rem;
+    color: var(--dark_color);
+    border-radius:inherit;
+    padding-left:0.8rem;
+    padding-top:0.8rem;
+    resize:none;
+    max-height: 180px;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+}
+
+.chat-from .message-input:hover{
+    scrollbar-color: var(--third-color) transparent;
+}
+
+/*
+buttons container
+*/
+.chat-form .chat-controls{
+    display:flex;
+    height:3rem;
+    align-items:center;
+    align-self:flex-end;
+    padding-right: 0.2rem;
+
+}
+
+/*
+buttons
+*/
+
+.chat-form .chat-controls button{
+    height:2rem;
+    width:2rem;
+    border:none;
+    font-size:1,15rem;
+    cursor:pointer;
+    color:var(--primary-color);
+    background:var(--white_color);
+    border-radius: 50%;
+    transition:0.2s ease;
+}
+
+/*
+
+send button
+*/
+.chat-form .chat-controls #send-message{
+    color: var(--white_color);
+    display:none;
+    background: var(--primary-color);
+}
+
+/*display the send button only if the text is valid*/
+/*
+    :valid = select the input valid form element
+    ~ = brother selector, all the element after the valid~
+*/
+.chat-form .message-input:valid~.chat-controls #send-message{
+    display:block;
+}
+
+
+.chat-form .chat-controls #send-message:hover{
+    background: var(--primary-color-dark);
+}
+
+.chat-form .chat-controls button:hover{
+    background-color: var(--third-color);
+
+}
+
+
+/*
+Resizing the attachment size
+*/
+.chat-body .user-message .attachment{
+    width:50%;
+    margin-top: -7px;
+    border-radius:13px 3px 13px 13px;
+}
+
+
+/*
+this space is used for: 4 element: 
+upload button:
+upload input:
+file upload wrapper (preview):
+upload cancel
+*/
+.chat-form .file-upload-wrapper{
+    height:35px;
+    width:35px;
+    position: relative;
+}
+
+/*
+using the same space
+*/
+.chat-form .file-upload-wrapper :where(img,button){
+    position: absolute;
+}
+
+.chat-form .file-upload-wrapper img{
+    width: 100%;
+    height:100%;
+
+    /*it's on the upload button*/
+    object-fit:cover;
+    border-radius: 50%;
+}
+
+/*
+change the cancel button color
+*/
+.chat-form .file-upload-wrapper #file-cancel {
+    color:#ff0000;
+    background:var(--white_color);
+}
+
+.chat-form .file-upload-wrapper :where(img, #file-cancel),
+.chat-form .file-upload-wrapper.file-uploaded #file-upload {
+    display:none;
+}
+
+/*
+the file-uploaded class is added only through the js code
+
+display the wrapper and the cancel button
+*/
+
+/*
+selecting class without space = .chat-form.file-upload-wrapper.file-uploaded img
+    -> having all these classes
+
+selecting class with space = .chat-form .file-upload-wrapper.file-uploaded img
+    -> uder the .chat-form  select the structures with all the .file-upload-wrapper.file-uploaded img
+*/
+
+.chat-form .file-upload-wrapper.file-uploaded img,
+.chat-form .file-upload-wrapper.file-uploaded:hover #file-cancel{
+    display: block;
+}
+
+
+
+/*emoji picker styling*/
+
+em-emoji-picker{
+    position:absolute;
+    left:50%;
+    top:-337px;
+    width:100%;
+    max-width: 350px;
+    max-height: 330px;
+    visibility:hidden;
+    transform:translateX(-50%);
+}
+
+/*
+the extended picker 
+*/
+body.show-emoji-picker em-emoji-picker{
+    visibility: visible;
+}
+
+
+
+
+/*
+
+Responsive UI
+
+when width < = 520 px
+*/
+
+@media (max-width: 520px){
+    #chatbot-toggler{
+        right:40px;
+        bottom:40px;
+    }
+
+    .chatbot-popup{
+        right:0;
+        bottom: 0;
+        height:100%;
+        border-radius: 0;
+        width:100%;
+    }
+
+    .chatbot-popup .chat-header{
+        padding: 12px 15px;
+    }
+
+    .chat-body{
+        height:calc(90%-55px);
+        padding:25px 15px;
+    }
+
+    .chat-footer{
+        padding: 10px 15px 15px;
+    }
+
+
+    .chat-form .file-upload-wrapper.file-uploaded #file-cancel{
+        opacity: 0;
+    }
+
+}

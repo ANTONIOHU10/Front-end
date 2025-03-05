@@ -183,7 +183,7 @@ const handleOutgoingMessage = (e) =>{
     setTimeout(()=>{
         //const = block level variable
         //create a new message
-        const messageContent = `<img src="assets/bot1.png" class="bot-avatar" width="50" height="50">
+        const messageContent = `<img src="asset/bot1.png" class="bot-avatar" width="50" height="50">
 
                 <div class="message-text">
                     <div class="thinking-indicator">

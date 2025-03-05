@@ -11,7 +11,8 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
 
-    
+    <!--Google icon-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 </head>
 
@@ -94,9 +95,87 @@
             <li><a href="#">Homepage</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Career</a></li>
-            <li><a href="#">Settinga</a></li>
+            <li><a href="#">Setting</a></li>
         </ul>
     </div>
+
+
+    <!--Chat bot-->
+
+     <!--Tool bar-->
+     <button id="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-rounded">close</span>
+    </button>
+
+
+    <div class="chatbot-popup">
+
+        <!--Chatbot Header-->
+        <div class="chat-header">
+            <div class="header-info">
+                <img src="assets\bot1.png" class ="chatbot-logo" width="50" height="50"
+                viewBox="0 0 1024 1024">
+                <h2 class="logo-text">Chatbot</h2>
+            </div>
+            <button id ="close-chatbot" class="material-symbols-rounded">
+                keyboard_arrow_down</button>
+        </div>
+
+
+        <!--Chatbot Body-->
+        <div class="chat-body">
+
+            <!--Bot message-->
+            <div class="message bot-message">
+                <img src="assets\bot1.png" class="bot-avatar" width="50" height="50">
+
+
+                <div class="message-text">Hey there 😊 <br/>
+                    How can i help you today?
+                </div>
+            </div>
+        </div>
+
+        <!--Chatbot footer-->
+        <div class="chat-footer">
+            <form action="#" class="chat-form">
+                <textarea placeholder="Message..." class="message-input" required></textarea>
+                
+                <div class="chat-controls">
+                    <button type="button" id="emoji-picker" class="material-symbols-rounded">
+                        sentiment_satisfied
+                    </button>
+                    
+                    <div class="file-upload-wrapper">
+                        <input type="file" accept="images/*" id="file-input" hidden>
+
+                        <!--preview of the uploaded image-->
+                        <img src="#">
+
+                        <button type="button" id="file-upload" class="material-symbols-rounded">
+                            attach_file
+                        </button>
+
+                        <button type="button" id="file-cancel" class="material-symbols-rounded">
+                            Close
+                        </button>
+                    </div>
+
+
+                    <button type="submit" id ="send-message"class="material-symbols-rounded">
+                        arrow_upward
+                    </button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <!--Linking the emoji mart-->
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
+
+
 
     <!--scroll reveal animation effect-->
     <script src="https://unpkg.com/scrollreveal"></script>
