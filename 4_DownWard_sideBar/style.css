@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Color Variables */
+:root {
+    --sidebar-bg: #544a49;
+    --sidebar-height: 60px;
+    --sidebar-height-active: 100px;
+    --text-color: #fff;
+    --menu-item-color: rgb(255, 246, 246);
+    --menu-item-hover-bg: rgb(32, 29, 29);
+    --menu-item-hover-color: #fff;
+    --menu-header-color: rgb(187, 152, 146);
+    --tooltip-bg: rgba(0, 0, 0, 0.8);
+    --border-color: rgb(218, 147, 147);
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    height: var(--sidebar-height);
+    color: var(--text-color);
+    padding: 0;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    background: black;
+}
+
+.logo,
+.menu-item,
+.logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: justify-content 0.5s ease;
+}
+
+.logo {
+    margin-left: 30px;
+}
+
+.logo i,
+.menu-item i,
+.logout i {
+    font-size: 2rem;
+    transition: 0.5s ease;
+}
+
+.logo span,
+.menu-item span,
+.logout span {
+    margin-left: 10px;
+    display: none;
+    transition: 0.5s ease;
+}
+
+/*
+container of the logos
+*/
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-header {
+    
+    color: var(--menu-header-color);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.5s ease;
+
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: var(--menu-item-color);
+    transition: all 0.5 ease;
+}
+
+.menu-item:hover,
+.nav-active,
+.logout:hover {
+    background: var(--menu-item-hover-bg);
+    color: var(--menu-item-hover-color);
+    transition: 0.5s ease;
+}
+
+.menu-item i,
+.logout i {
+    font-size: 20px;
+}
+
+.logout {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--menu-item-color);
+}
+
+/* when sidebar menu is active */
+.sidebar.active {
+    height: var(--sidebar-height-active);
+}
+
+.sidebar.active .logo,
+.sidebar.active .menu-item,
+.sidebar.active .logout {
+    justify-content: flex-start;
+}
+
+/* when sidebar is active show the nav items */
+.sidebar.active .logo span,
+.sidebar.active .menu-item span,
+.sidebar.active .logout span {
+    display: block;
+}
+
+.sidebar.active .menu-header {
+    font-size: 20px;
+    text-align: left;
+}
+
+/* toggle menu */
+.toggle-menu {
+    position: absolute;
+    top: 50px;
+    right: 50%;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--menu-item-hover-bg);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s ease-in-out;
+    background: black;
+}
+
+/* menu item tooltip */
+[data-tooltip] {
+    position: relative;
+}
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    background-color: var(--tooltip-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+[data-tooltip]:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.sidebar:not(.active) [data-tooltip]:hover::before,
+.sidebar:not(.active) [data-tooltip]:hover::after {
+    opacity: 1;
+}
+.logout[data-tooltip]::before {
+    top: 120%;
+}
+.logout[data-tooltip]::after {
+    top: 100%;
+}
