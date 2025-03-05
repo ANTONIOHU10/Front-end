@@ -197,23 +197,6 @@ header{
     
 }
 
-header::before{
-    display:none;
-    position:absolute;
-    content:"";
-    height:100%;
-    max-width: 35rem;
-    aspect-ratio: 1;
-    top:50%;
-    left:-5rem;
-    transform:translateY(-50%);
-    border-radius:100%;
-    background-color: var(--primary-color);
-    opacity: 0.3;
-
-    z-index: -1;
-
-}
 
 .header_container{
     display:grid;
@@ -222,6 +205,9 @@ header::before{
     padding: 0rem;
 }
 
+/*
+The background image
+*/
 .header_image img{
     max-width:500px;
     margin-inline:auto;
@@ -299,6 +285,9 @@ header::before{
     padding-left: 1rem;
 }
 
+/*
+the contact me button
+*/
 .header_btns .btn:nth-child(2) {
     background-color: transparent;
     border-color: var(--white);
@@ -309,6 +298,9 @@ header::before{
     border-color: var(--primary-color-dark);
 }
 
+/*
+the bottom dot image png
+*/
 .header_bg-1 {
     position: absolute;
     max-width: 40rem;
@@ -366,8 +358,11 @@ header::before{
         gap:1rem;
     }
 
+    /*
+    the top dot image
+    */
     .nav_bg-1{
-        /* Active the dot image*/
+        /* Active the dot image, responsive*/
         display: flex;
         max-width: 40rem;
         position: absolute;
@@ -526,6 +521,9 @@ header::before{
         height:100%;
     }
 
+    /*
+    the background image
+    */
     .header_image img{
         position: absolute;
         width: unset;
