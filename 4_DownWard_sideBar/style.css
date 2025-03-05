@@ -8,7 +8,7 @@
 
 /* Color Variables */
 :root {
-    --sidebar-bg: #544a49;
+    --black: #000000;
     --sidebar-height: 60px;
     --sidebar-height-active: 100px;
     --text-color: #fff;
@@ -29,12 +29,12 @@
     height: var(--sidebar-height);
     color: var(--text-color);
     padding: 0;
-    background-color: var(--sidebar-bg);
+    margin: 0;
+    background: var(--black);
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: all 0.5s ease;
-    background: black;
 }
 
 .logo,
@@ -43,7 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: justify-content 0.5s ease;
+    transition:  0.5s ease;
 }
 
 .logo {
@@ -158,44 +158,43 @@ container of the logos
 }
 
 /* menu item tooltip */
+
+/* all item with the data-tooltip class*/
 [data-tooltip] {
     position: relative;
 }
+
+/*
+  used to display the content
+*/
 [data-tooltip]::before {
+    /*get the text content from the data-tooltip attribute in HTML*/
     content: attr(data-tooltip);
+    /* the tooltip position respect the original structure*/
     position: absolute;
-    left: 50%;
+    left: -40%;
     top: 120%;
-    transform: translateX(-50%);
     background-color: var(--tooltip-bg);
     padding: 5px 10px;
+    margin: 0;
     border-radius: 5px;
     font-size: 20px;
     white-space: nowrap;
+    /*
+    hide it
+    */
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.5s ease;
+    transition: 0.5s ease;
 }
 
-[data-tooltip]:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--tooltip-bg) transparent transparent transparent;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-.sidebar:not(.active) [data-tooltip]:hover::before,
-.sidebar:not(.active) [data-tooltip]:hover::after {
+/*
+    display the tooltip when the toolbar is not active
+*/
+.sidebar:not(.active) [data-tooltip]:hover::before{
     opacity: 1;
+    z-index: 2;
 }
 .logout[data-tooltip]::before {
     top: 120%;
-}
-.logout[data-tooltip]::after {
-    top: 100%;
 }

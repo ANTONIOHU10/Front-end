@@ -16,6 +16,7 @@ toggleButton.addEventListener("click", () => {
         toggleButton.style.top = "100px";
     } else {
         toggleButton.style.top = "50px";
+        toggleButton.style.zIndex ="-3";
     }
 
     sidebar.classList.toggle("active");
