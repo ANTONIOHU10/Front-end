@@ -668,6 +668,7 @@ body.show-chatbot .chatbot-popup{
     opacity:1;
     pointer-events:auto; /* the pointer-event was none, now we active it*/
     transform:scale(1); /* scale = normal size*/
+    z-index: 10;
 }
 
 body.show-chatbot #chatbot-toggler{
