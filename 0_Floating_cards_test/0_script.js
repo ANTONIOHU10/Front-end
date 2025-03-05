@@ -4,11 +4,14 @@ const buttons = document.querySelectorAll('.listButton button')
 
 panels.forEach(panel => {
     panel.addEventListener('click', () => {
+        //remove active from all others
         removeActiveClasses()
+        //once clicked active the current one
         panel.classList.add('active')
     })
 })
 
+//auxiliary function
 function removeActiveClasses() {
     panels.forEach(panel => {
         panel.classList.remove('active')
@@ -16,21 +19,6 @@ function removeActiveClasses() {
 }
 
 
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', activatePanel);
-});
-
-function activatePanel() {
-    const panelId = this.getAttribute('data-target');
-    const panelToActivate = document.getElementById(panelId);
-    
-    removeActiveClasses();
-    if(panelToActivate){
-        panelToActivate.classList.add('active');
-    }
-    
-    
-}
 
 /*
 
@@ -49,20 +37,20 @@ document.querySelector('.nightMode').addEventListener('mouseenter', function() {
   document.querySelector('.nightMode').addEventListener('click', function() {
     const icon = this.querySelector('i');
     
-    // 切换图标样式
+    // change icon
     if (icon.classList.contains('fa-regular')) {
       icon.classList.remove('fa-regular');
       icon.classList.add('fa-solid');
-      // 更改页面背景为黑色
+      // change the dark background
       document.body.style.backgroundColor = 'black';
-      document.body.style.color = 'white'; // 更改文字颜色以保证可读性
+      document.body.style.color = 'white'; // change font color
       icon.classList.add('icon-bg-white');
     } else {
       icon.classList.remove('fa-solid');
       icon.classList.add('fa-regular');
-      // 更改页面背景为白色
+      // change the background color
       document.body.style.backgroundColor = 'white';
-      document.body.style.color = 'black'; // 恢复文字颜色
+      document.body.style.color = 'black'; // restore the font color
       icon.classList.remove('icon-bg-white');
     }
   });

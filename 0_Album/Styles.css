@@ -134,7 +134,9 @@ img {
 }
 
 
-
+/*
+flex -> block = having padding area clickable
+*/
 .nav-list a {
   display: block;
   font-size: 2.2rem;
@@ -161,6 +163,10 @@ img {
   color: black;
 }
 
+/*
+image sections
+*/
+
 .welcome-section::before {
   content: "";
   position: absolute;
@@ -168,6 +174,10 @@ img {
   left: 0;
   width: 200%;
   height: 100%;
+
+  /*
+    horizontal position and vertical position
+  */
   background: url('https://cdna.artstation.com/p/assets/images/images/054/039/870/large/annn-190922-edit-621102422468767.jpg?1663626444') 0 0 no-repeat,
               url('https://cdna.artstation.com/p/assets/images/images/053/964/598/large/annn-img-20220917-194359.jpg?1663442315') 20% 0 no-repeat,
               url('https://cdna.artstation.com/p/assets/images/images/054/539/814/large/annn-031022-edit-1441634416946165.jpg?1664794809') 40% 0 no-repeat,
@@ -197,6 +207,12 @@ img {
     transform: translateX(-25%);
   }
 }
+
+/*
+.welcome-section > p = direct childs
+
+.welcome-section p = all childs
+*/
 
 .welcome-section > p {
   font-size: 4rem;
@@ -229,6 +245,9 @@ img {
 .projects-grid {
   display: flex;
   overflow: hidden;
+  /*
+  direction
+  */
   scroll-snap-type: x mandatory;
   gap: 2rem;
   padding: 2rem;
@@ -310,7 +329,7 @@ img {
 .btn-show-all {
   font-size: 2rem;
   background: var(--main-gray);
-  transition: background 0.3s ease-out;
+  transition: 0.3s ease-out;
   margin-top: 5rem;
 }
 
@@ -394,6 +413,10 @@ footer {
   border-top: 4px solid var(--main-red);
 }
 
+/*
+
+all direct childs of footer
+*/
 footer > p {
   margin: 2rem;
 }
@@ -437,7 +460,7 @@ footer i {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
-  transition: background 0.2s;
+  transition: 0.2s;
 }
 
 .toolbar-item:hover {
