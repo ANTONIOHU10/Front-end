@@ -10,6 +10,9 @@ const JobListings = () => {
         console.log(jobs);
     */
 
+    /**only the recent 3 jobs */
+   const recentJobs = jobs.slice(0,3);
+
 
     return (
         <section className="bg-blue-50 px-4 py-10">
@@ -19,7 +22,7 @@ const JobListings = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-                {jobs.map((job) => (
+                {recentJobs.map((job) => (
                     <JobListing key={job.id} job = {job}/>
                 ))
                 }
