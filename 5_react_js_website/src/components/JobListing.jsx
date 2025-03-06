@@ -3,6 +3,8 @@ import { useState } from 'react'
 /** react additional icons */
 import {FaMapMarker} from 'react-icons/fa'
 
+import { Link } from 'react-router-dom'
+
 /**
  * 
  * @param {*} if it's an object, component, variable, list, array... use the curly braces 
@@ -63,14 +65,14 @@ const JobListing = ({job}) => {
         {/** from the json file */}
         {job.location}
         </div>
-        <a
+        <Link
         
         /** from the json file */
-        href={`/job/${job.id}`}
+        to={`/job/${job.id}`}
         className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
         >
         Read More
-        </a>
+        </Link>
     </div>
     </div>
     </div>  
