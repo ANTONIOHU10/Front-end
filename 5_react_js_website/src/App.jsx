@@ -15,14 +15,17 @@ import {
 
 import HomePage from './Pages/HomePage'
 import MainLayout from './layouts/MainLayout'
-import JobsPage from './layouts/JobsPage'
+import JobsPage from './Pages/JobsPage'
+import NotFoundPage from './Pages/NotFoundPage'
 
 const router = createBrowserRouter(
 
   createRoutesFromElements(    
     <Route path = "/" element={<MainLayout/>}>
           <Route index element={<HomePage/>}/>
-          <Route path ="/jobs" element={<JobsPage/>}/>
+          <Route path = "/jobs" element={<JobsPage/>}/>
+          {/**all not found page -> path = "*" */}
+          <Route path ="*" element={<NotFoundPage/>}/>
     </Route>
   )
 );
