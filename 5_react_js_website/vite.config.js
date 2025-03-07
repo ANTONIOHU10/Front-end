@@ -10,5 +10,22 @@ export default defineConfig({
   ],
   server:{
     port:3000,
+    proxy:{
+      /**
+       * 
+       * apply proxy for all request that starts with "/api"
+       */
+      '/api':{
+        /** the target server using proxy */
+          target:'http://localhost:8000',
+          /** from different port -> 3000 -> 8000 
+           * 
+           * the browser disabled it for default
+          */
+          changeOrigin: true,
+        /** rewrite url deleting /api */
+          rewrite:(path) => path.replace(/^\/api/,''),
+      },
+    }
   },
 });

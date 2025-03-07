@@ -1,6 +1,10 @@
+/* static usage
 import jobs from '../jobs.json'
+*/
+import { useState,useEffect } from 'react';
 import JobListing from './JobListing';
 import React from 'react'
+import Spinner from './Spinner';
 
 const JobListings = ({isHome = false}) => {
 
@@ -10,8 +14,40 @@ const JobListings = ({isHome = false}) => {
         console.log(jobs);
     */
 
-    /**only the recent 3 jobs is it's the homepage*/
-   const JobListings = isHome? jobs.slice(0,3): jobs;
+    /**only the recent 3 jobs is it's the homepage -> static
+     * 
+     * const JobListings = isHome? jobs.slice(0,3): jobs;
+    */
+
+
+   /** to save values 
+    * 
+    * in this case jobs= [] -> list
+   */
+    const [jobs,setJobs] = useState([]);
+    const [loading,setLoading] = useState(true);
+
+   /** use Effect */
+    useEffect(() => {
+        const fetchJobs = async() => {
+            const apiUrl = isHome ? "/api/jobs?_limit=3" : "/api/jobs"
+            try{
+                /*  a way to fetch only 3 jobs
+                const res = await fetch("http://localhost:8000/jobs?_limit=3");
+                 */
+                const res = await fetch(apiUrl);
+                const data = await res.json();
+                setJobs(data);
+            } catch (error) {
+                console.log('Error fetching data', error);
+            } finally {
+                setLoading(false);
+
+            }
+        }   
+
+        fetchJobs();
+    },[]);
 
 
     return (
@@ -21,14 +57,23 @@ const JobListings = ({isHome = false}) => {
 
                 {isHome ? 'Recent Jobs': 'Browse Jobs'}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-                {JobListings.map((job) => (
+            
+            {/**{loading ? ... : ...} for conditional logic if loading */}
+            {loading ? 
+                /**loading  -> passing the loading state to the component*/
+                (<Spinner loading = {loading}/>):
+
+                /** not loading */
+                (<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {jobs.map((job) => (
                     <JobListing key={job.id} job = {job}/>
-                ))
-                }
+                    ))
+                    }
+                </div>)   
+            }
             
-            </div>
+            
         </div>
         </section>
     )
