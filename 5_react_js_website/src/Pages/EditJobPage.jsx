@@ -47,6 +47,7 @@ const EditJobPage = ({updateJobSubmit}) => {
 
         //notify the user using toast lib
         toast.success("Job Updated Successfully");
+        
         /** return to the /jobs page */
         return navigate(`/jobs/${id}`);
     }
@@ -57,7 +58,9 @@ const EditJobPage = ({updateJobSubmit}) => {
             <div
             className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0"
             >
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm}
+                
+            >
                 <h2 className="text-3xl text-center font-semibold mb-6">Update job</h2>
 
                 <div className="mb-4">
@@ -237,6 +240,7 @@ const EditJobPage = ({updateJobSubmit}) => {
                 <button
                     className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
                     type="submit"
+                    
                 >
                     Update Job
                 </button>
