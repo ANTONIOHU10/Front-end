@@ -1,16 +1,10 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import HomeCards from './components/HomeCards'
-import JobListings from './components/JobListings'
-import ViewAllJobs from './components/ViewAllJobs'
-
 /** Router lib */
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-  RouterProvider,
+  RouterProvider
 } from 'react-router-dom';
 
 import HomePage from './Pages/HomePage'
@@ -19,8 +13,7 @@ import JobsPage from './Pages/JobsPage'
 import NotFoundPage from './Pages/NotFoundPage'
 import JobPage, {jobLoader} from './Pages/JobPage'
 import AddJobPage from './Pages/AddJobPage'
-
-
+import EditJobPage from './Pages/EditJobPage';
 
 
 const App = () => {
@@ -50,6 +43,24 @@ const App = () => {
   return;
   }
   
+
+  /** Update job */
+
+  const updateJob = async (job) =>{
+    const res = await fetch(`/api/jobs/${job.id}`,{
+      method:"PUT",/** adding new job */
+
+      /** specifying the type of content */
+      headers:{
+        "Content-Type" : "application/json"
+      },
+
+      /** transform our data into JSON */
+      body:JSON.stringify(job)
+  });
+  return;
+
+  }
   const router = createBrowserRouter(
   
     createRoutesFromElements(    
@@ -58,17 +69,21 @@ const App = () => {
             <Route path = "/jobs" element={<JobsPage/>}/>
             <Route path = "/add-job" element= {<AddJobPage addJobSubmit={addJob}/>}/>
             {/** :id = dynamical for every pin job */}
-            <Route path = "/jobs/:id" element ={<JobPage deleteJob={deleteJob}/>} loader = {jobLoader}/>
+            <Route path = "/jobs/:id" element ={<JobPage deleteJob={deleteJob}/>} loader = {jobLoader} />
+
+            <Route path = "/edit-job/:id" element ={<EditJobPage updateJobSubmit={updateJob}/>} loader = {jobLoader}/>
             {/**all not found page -> path = "*" */}
             <Route path ="*" element={<NotFoundPage/>}/>
             
       </Route>
     )
   );
-  
 
-      return <RouterProvider router = {router} />;
-
+      return(
+      <RouterProvider router = {router} 
+      
+    />  
+  );
 };
 
 export default App

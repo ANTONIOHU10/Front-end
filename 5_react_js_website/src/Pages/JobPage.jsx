@@ -3,6 +3,7 @@ import React from 'react'
 import { useParams, useLoaderData, useNavigate } from 'react-router-dom'
 import { FaArrowLeft ,FaMapMarker} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 
 /**
@@ -26,8 +27,10 @@ const JobPage = ({deleteJob}) => {
       //call the delete function passed by App using the delete id
       deleteJob(jobId);
 
+      //using toast lib to notify the user
+      toast.success('Job deleted successfully');
       //return to the jobs page
-      navigate("/jobs");
+      return navigate("/jobs");
     }
   }
 /** for default, it fetches all these data when the page is open, because the second parameter is [] */
@@ -109,7 +112,7 @@ const JobPage = ({deleteJob}) => {
               <h3 className="text-xl font-bold mb-6">Manage Job</h3>
               <Link
               /**dynamic for every jobpage*/
-                to= {`/jobs/edit/${job.id}`}
+                to= {`/edit-job/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
           
