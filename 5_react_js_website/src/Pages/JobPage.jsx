@@ -1,6 +1,6 @@
 import React from 'react'
 /** get id from the current URL */
-import { useParams, useLoaderData } from 'react-router-dom'
+import { useParams, useLoaderData, useNavigate } from 'react-router-dom'
 import { FaArrowLeft ,FaMapMarker} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
@@ -9,10 +9,27 @@ import { Link } from 'react-router-dom'
  * using the router features, at router layer we got already all these data, and no need to fetch manually in every component using UseEffect
  * so we don't need the loading/ spinner component, because all data are already fetched before the rendering of the page
  */
-const JobPage = () => {
-  const {id} = useParams();
-  const job = useLoaderData();
+const JobPage = ({deleteJob}) => {
+    const {id} = useParams();
+    const job = useLoaderData();
+    const navigate = useNavigate();
  
+  // passing the id of the object/job to be deleted
+    const onDeleteClick= (jobId) => {
+    const confirm = window.confirm("Are you sure you want to delete this listing?")
+
+  
+    if(!confirm){
+      return;
+    } else {
+
+      //call the delete function passed by App using the delete id
+      deleteJob(jobId);
+
+      //return to the jobs page
+      navigate("/jobs");
+    }
+  }
 /** for default, it fetches all these data when the page is open, because the second parameter is [] */
 
   return (
@@ -95,7 +112,8 @@ const JobPage = () => {
                 to= {`/jobs/edit/${job.id}`}
                 className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
-              <button
+          
+              <button onClick={() => onDeleteClick(job.id)} // passing the id (of the current page) to be deleted
                 className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
               >
                 Delete Job
