@@ -20,7 +20,7 @@ const App = () => {
 
   /** Add new job = function for the form -> add the new job in to jobs.json */
   const addJob = async (newJob)=>{
-    const res = await fetch("/api/jobs",{
+    const res = await fetch("https://json-server-nu-beige.vercel.app/jobs",{
         method:"POST",/** adding new job */
 
         /** specifying the type of content */
@@ -37,7 +37,7 @@ const App = () => {
   /** Delete job  */
 
   const deleteJob =async (id) => {
-    const res = await fetch(`/api/jobs/${id}`,{
+    const res = await fetch(`https://json-server-nu-beige.vercel.app/jobs/${id}`,{
       method:"DELETE",/** adding new job */
   });
   return;
@@ -47,7 +47,7 @@ const App = () => {
   /** Update job */
 
   const updateJob = async (job) =>{
-    const res = await fetch(`/api/jobs/${job.id}`,{
+    const res = await fetch(`https://json-server-nu-beige.vercel.app/jobs/${job.id}`,{
       method:"PUT",/** adding new job */
 
       /** specifying the type of content */
