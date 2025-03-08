@@ -46,11 +46,11 @@ const JobListing = ({job}) => {
      * the function setShowFullDescription take input from showFullDescription as input
      * 
     */}
-    <button onClick = {() => setShowFullDescription((prevState) => !prevState)} className="text-indigo-500 mb-5 hover:text-indigo-600">
+    <button onClick = {() => setShowFullDescription((prevState) => !prevState)} className="text-blue-500 mb-5 hover:text-blue-600">
         {showFullDescription ? 'Less': 'More'}
     </button>
 
-    <h3 className="text-indigo-500 mb-2">
+    <h3 className="text-blue-500 mb-2">
         {/** from the json file */}
         {job.salary} /Year
     </h3>
@@ -69,7 +69,7 @@ const JobListing = ({job}) => {
         
         /** dynamical using the id from the json file*/
         to={`/jobs/${job.id}`}
-        className="h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+        className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
         >
         Read More
         </Link>

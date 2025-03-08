@@ -9,22 +9,21 @@ const Navbar = () => {
   const linkClass = ({isActive}) => 
     isActive ? 
     /** if active, background = black  -> this function is useful for all button(Link) */
-    "bg-black text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 transition duration-300"
+    "bg-gray-200 text-black hover:bg-gray-200 hover:text-black rounded-xl px-3 py-1 transition duration-300"
     : 
-    "text-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 transition duration-300";
+    "text-white hover:bg-gray-200 hover:text-black rounded-xl px-3 py-1 transition duration-300";
 
   return (
-  <Navbar_hero>
-
-    <NavbarBrand>      
-      <p className="font-bold text-inherit">Jobs<span className='text-blue-400'>.com</span></p>
+  <Navbar_hero className='bg-black py-1.5'>
+    <NavbarBrand>
+      <a href = "/" className="font-bold text-white">Jobs<span className='text-blue-400'>.com</span></a>
     </NavbarBrand>
 
 
     <NavbarContent className="sm:flex gap-4" justify="center">
 
-      <NavbarItem >
-        <NavLink className={linkClass} color="foreground" to ="/">
+      <NavbarItem>
+        <NavLink className={linkClass}  color="foreground"  to ="/">
           Home
         </NavLink>
       </NavbarItem>

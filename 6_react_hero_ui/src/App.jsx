@@ -14,6 +14,7 @@ import NotFoundPage from './Pages/NotFoundPage'
 import JobPage, {jobLoader} from './Pages/JobPage'
 import AddJobPage from './Pages/AddJobPage'
 import EditJobPage from './Pages/EditJobPage';
+import { Navbar } from '@heroui/react';
 
 
 const App = () => {
@@ -74,6 +75,8 @@ const App = () => {
             <Route path = "/edit-job/:id" element ={<EditJobPage updateJobSubmit={updateJob}/>} loader = {jobLoader}/>
             {/**all not found page -> path = "*" */}
             <Route path ="*" element={<NotFoundPage/>}/>
+
+            
             
       </Route>
     )
