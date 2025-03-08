@@ -3,7 +3,7 @@ import Hero from '../components/Hero'
 import HomeCards from '../components/HomeCards'
 import JobListings from '../components/JobListings'
 import ViewAllJobs from '../components/ViewAllJobs'
-import Tip from '../components/Tip'
+
 
 const HomePage = () => {
 
@@ -16,8 +16,6 @@ const HomePage = () => {
         <HomeCards />
         <JobListings isHome={true}/>
         <ViewAllJobs />
-
-        <Tip />
 
          
     </>

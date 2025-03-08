@@ -1,30 +1,10 @@
 import React from 'react'
-import Card from '../components/Card'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 import {Card as Card_Hero, CardHeader, CardBody, CardFooter,Avatar, Divider, Image, Button} from "@heroui/react";
 
 const HomeCards = () => {
-  const information_1 = {
-    name: "Antonio",
-    link: "@antonio",
-    description: "A web developer",
-    tag: "Looking for job",
-    following: 120,
-    followers: 300,
-    avatar:"https://heroui.com/avatars/avatar-9.png"
-  };
-
-  const information_2 = {
-    name: "Davide",
-    link: "@davide",
-    description: "Browse our React jobs and start your career today",
-    tag: "Hiring",
-    following: 80,
-    followers: 150,
-    avatar:"https://heroui.com/avatars/avatar-10.png"
-  };
 
  
 
@@ -46,7 +26,7 @@ const HomeCards = () => {
               Browse Jobs
             </Link>
 
-            <Card information={information_1}/>
+  
           </Card_Hero>
 
           <Card_Hero bg='bg-indigo-100'>
@@ -61,7 +41,7 @@ const HomeCards = () => {
               Add Job
             </Link>
 
-            <Card information={information_2}/>
+
               
           </Card_Hero>          
         </div>
