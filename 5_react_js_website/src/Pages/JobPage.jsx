@@ -132,6 +132,10 @@ const JobPage = ({deleteJob}) => {
 
 const jobLoader = async ({params}) => {
   const res = await fetch(`https://json-server-nu-beige.vercel.app/jobs/${params.id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch job data');
+  }
+  console.log('Job data fetched successfully',res.json());
   const data = await res.json();
   return data; 
 }
