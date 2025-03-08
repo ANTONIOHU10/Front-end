@@ -30,7 +30,7 @@ const JobListings = ({isHome = false}) => {
    /** use Effect */
     useEffect(() => {
         const fetchJobs = async() => {
-            const apiUrl = isHome ? "/api/jobs?_limit=3" : "/api/jobs"
+            const apiUrl = isHome ? "https://json-server-nu-beige.vercel.app/jobs?_limit=3" : "https://json-server-nu-beige.vercel.app/jobs"
             try{
                 /*  a way to fetch only 3 jobs
                 const res = await fetch("http://localhost:8000/jobs?_limit=3");
