@@ -38,7 +38,9 @@ const JobListings = ({isHome = false}) => {
                 const res = await fetch("http://localhost:8000/jobs?_limit=3");
                  */
                 const res = await fetch(apiUrl);
+                
                 const data = await res.json();
+                console.log(data);
                 setJobs(data);
             } catch (error) {
                 console.log('Error fetching data', error);
