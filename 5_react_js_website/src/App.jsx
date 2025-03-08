@@ -47,7 +47,7 @@ const App = () => {
   /** Update job */
 
   const updateJob = async (job) =>{
-    const res = await fetch(`https://json-server-nu-beige.vercel.app/jobs/${id}`,{
+    const res = await fetch(`https://json-server-nu-beige.vercel.app/jobs/${job.id}`,{
       method:"PUT",/** adding new job */
 
       /** specifying the type of content */
