@@ -17,7 +17,7 @@ export default defineConfig({
        */
       '/api':{
         /** the target server using proxy */
-          target:'https://json-server-nu-beige.vercel.app/',
+          target:'https://json-server-nu-beige.vercel.app',
           /** from different port -> 3000 -> 8000 
            * 
            * the browser disabled it for default
