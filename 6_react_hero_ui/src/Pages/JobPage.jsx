@@ -41,7 +41,7 @@ const JobPage = ({deleteJob}) => {
       <div className="container m-auto py-6 px-6">
         <Link
           to="/jobs"
-          className="text-indigo-500 hover:text-indigo-600 flex items-center"
+          className="text-blue-700 hover:text-blue-900 flex items-center"
         >
           <FaArrowLeft className='mr-2'/> Back to Job Listings
         </Link>
@@ -68,7 +68,7 @@ const JobPage = ({deleteJob}) => {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-              <h3 className="text-indigo-800 text-lg font-bold mb-6">
+              <h3 className="text-blue-900 text-lg font-bold mb-6">
                 Job Description
               </h3>
 
@@ -76,7 +76,7 @@ const JobPage = ({deleteJob}) => {
                 {job.description}
               </p>
 
-              <h3 className="text-indigo-800 text-lg font-bold mb-2">job</h3>
+              <h3 className="text-blue-900 text-lg font-bold mb-2">job</h3>
 
               <p className="mb-4">{job.salary} / Year</p>
             </div>
@@ -113,7 +113,7 @@ const JobPage = ({deleteJob}) => {
               <Link
               /**dynamic for every jobpage*/
                 to= {`/edit-job/${job.id}`}
-                className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                className="bg-blue-500 hover:bg-blue-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</Link>
           
               <button onClick={() => onDeleteClick(job.id)} // passing the id (of the current page) to be deleted
