@@ -22,6 +22,7 @@ https://front-end-xn3s.vercel.app/
 
 ![alt text](6_react_hero_ui/src/assets/images/image.png)
     a project follwed Traversy Media course: https://www.youtube.com/watch?v=LDB4uaJ87e0&t=4685s
+    using: tailwindCss + heroUI + JSON server + toastify
     
     --Usage
     This project uses JSON-Server for a mock backend.
