@@ -1,5 +1,6 @@
 import React from "react"
 import Search from "./components/Search"
+import Spinner from "./components/Spinner";
 import { useState,useEffect } from "react"
 
 
@@ -74,7 +75,7 @@ const App = () => {
         <section className="all-movies">
           <h2>All movies</h2>
 
-          {isLoading ? (<p className="text-white">Loading...</p>) : 
+          {isLoading ? <Spinner/> : 
             errorMessage ? (<p className="text-red-500">{errorMessage}</p>) : 
             (<ul>{movieList.map((movie) => (<p key={movie.id} className="text-white">{movie.title}</p>))
               }</ul>)
