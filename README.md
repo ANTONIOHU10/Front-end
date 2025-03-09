@@ -20,7 +20,7 @@ https://front-end-xn3s.vercel.app/
 ## Project 6_react_hero_ui
 
 
-![alt text](6_react_hero_ui\src\assets\images\image.png)
+![alt text](6_react_hero_ui/src/assets/images/image.png)
     a project follwed Traversy Media course: https://www.youtube.com/watch?v=LDB4uaJ87e0&t=4685s
     
     --Usage
