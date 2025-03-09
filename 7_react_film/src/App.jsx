@@ -17,7 +17,7 @@ const App = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [movieList, setMovieList] = useState('');
+  const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchMovies = async () => {
@@ -73,6 +73,12 @@ const App = () => {
 
         <section className="all-movies">
           <h2>All movies</h2>
+
+          {isLoading ? (<p className="text-white">Loading...</p>) : 
+            errorMessage ? (<p className="text-red-500">{errorMessage}</p>) : 
+            (<ul>{movieList.map((movie) => (<p key={movie.id} className="text-white">{movie.title}</p>))
+              }</ul>)
+          }
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
         </section>
