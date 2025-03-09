@@ -19,5 +19,27 @@ https://front-end-xn3s.vercel.app/
 
 ## Project 6_react_hero_ui
 
+
 ![alt text](image.png)
+    a project follwed Traversy Media course: https://www.youtube.com/watch?v=LDB4uaJ87e0&t=4685s
+    
+    --Usage
+    This project uses JSON-Server for a mock backend.
+
+    --Install Dependencies
+    npm install
+    
+    --Run JSON Server
+    The server will run on http://localhost:8000
+    npm run server
+    
+    --Run Vite Frontend
+    React will run on http://localhost:3000
+    npm run dev
+    
+    --Build for Production
+    npm run build
+    
+    --Preview Production Build
+    npm run preview
 

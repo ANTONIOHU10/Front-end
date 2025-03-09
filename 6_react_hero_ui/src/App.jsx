@@ -76,6 +76,7 @@ const App = () => {
             {/**all not found page -> path = "*" */}
             <Route path ="*" element={<NotFoundPage/>}/>
 
+
             
             
       </Route>
