@@ -4,7 +4,6 @@ import Spinner from "./components/Spinner";
 import { useState,useEffect } from "react"
 import MovieCard from "./components/MovieCard";
 import {useDebounce} from 'react-use'
-import { getTrendingMovies, updateSearchCount } from "./appwrite";
 
 
 
@@ -25,7 +24,6 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [ debouncedSearchTerm, setDebounceSearchTerm] = useState('');
-  const [trendingMovies,setTrendingMovies] = useState([]);
   
   //before fetching the resource using the searchTerm, it will wait for 500ms, avoiding to many fetches
   useDebounce(()=> setDebounceSearchTerm(searchTerm),500,[searchTerm])
@@ -55,11 +53,6 @@ const App = () => {
       // [] = if there are no data found
       setMovieList(data.results || []);
 
-      //for every search, update the count
-      if(query && data.results.length > 0){
-        await updateSearchCount(query, data.results[0]);
-      }
-
     } catch (error) {
       console.error(`Error fetching movie: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later');
@@ -68,6 +61,7 @@ const App = () => {
     }
   }
 
+<<<<<<< HEAD
   const loadingTrendingMovies = async () =>{
     try{
       const movies = await getTrendingMovies();
@@ -84,6 +78,13 @@ const App = () => {
 
 
 
+=======
+  useEffect(()=>{
+    fetchMovies(debouncedSearchTerm);
+//every time the searchTerm change, the results will refresh
+  },[debouncedSearchTerm])
+
+>>>>>>> parent of 025769b (optimized search and trending movie)
   return (
     <main>
       <div className="pattern"/>
@@ -98,24 +99,9 @@ const App = () => {
             if we pass setSearchTerm as parameter, it will execute only once the component is rendered
         */}
         
-        {trendingMovies.length > 0 && (
-          <section className="trending">
-            <h2> Trending Movies</h2>
-
-            <ul>
-              {trendingMovies.map((movie,index)=> (
-                <li key={movie.$id}>
-                  <p>{index+1}</p>
-                  <img src={movie.poster_url} alt={movie.title} />
-                </li>
-              ))}
-            </ul>
-          </section>
-
-        )}
 
         <section className="all-movies">
-          <h2>All movies</h2>
+          <h2 className="mt-[40px]">All movies</h2>
 
           {isLoading ? <Spinner/> : 
             errorMessage ? (<p className="text-red-500">{errorMessage}</p>) : 
