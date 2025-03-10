@@ -42,11 +42,12 @@ export const getTrendingMovies = async () => {
  try {
   console.log("Hello!!!! 1");
   const result = await database.listDocuments(DATABASE_ID, COLLECTION_ID, [
-
+    Query.limit(5),
+    Query.orderDesc("count")
   ])
 
 
-  console.log("Hello !!! 2");
+  console.log("Hello !!!! 2");
   return result.documents;
  } catch (error) {
   console.error(error);
