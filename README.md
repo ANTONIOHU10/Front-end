@@ -46,4 +46,20 @@ https://front-end-xn3s.vercel.app/
 
 
 ## 7_react_film
-    using: appwrite 
+
+![alt text](7_react_film/src/assets/image.png)
+    using: tailwindCss + appwrite DB
+    a project follwed Traversy Media course: https://youtu.be/dCLhUialKPQ?si=w_WMcb9ORS2cEbSD
+
+    --Install Dependencies
+    npm install
+
+    --Run Vite Frontend
+    npm run dev
+    
+    --Build for Production
+    npm run build
+    
+    --Preview Production Build
+    npm run preview
+
