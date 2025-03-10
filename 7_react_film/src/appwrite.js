@@ -47,7 +47,7 @@ export const getTrendingMovies = async () => {
   ])
 
 
-  console.log("Hello !!! 2");
+  console.log("Hello !!!! 2");
   return result.documents;
  } catch (error) {
   console.error(error);
