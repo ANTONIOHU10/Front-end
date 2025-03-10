@@ -4,7 +4,6 @@ import Spinner from "./components/Spinner";
 import { useState,useEffect } from "react"
 import MovieCard from "./components/MovieCard";
 import {useDebounce} from 'react-use'
-import { getTrendingMovies, updateSearchCount } from "./appwrite";
 
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -61,7 +60,6 @@ const App = () => {
     }
   }
 
-<<<<<<< HEAD
   const loadingTrendingMovies = async () =>{
     try{
       const movies = await getTrendingMovies();
@@ -84,7 +82,12 @@ const App = () => {
 //every time the searchTerm change, the results will refresh
   },[debouncedSearchTerm])
 
->>>>>>> parent of 025769b (optimized search and trending movie)
+
+  // for every time the page is refreshed we got all trending movies
+  useEffect(() => {
+    loadingTrendingMovies();
+  },[]);
+
   return (
     <main>
       <div className="pattern"/>
