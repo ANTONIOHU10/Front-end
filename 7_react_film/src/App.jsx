@@ -89,10 +89,7 @@ const App = () => {
 
 
   // for every time the page is refreshed we got all trending movies
-  useEffect(() => {
-    loadingTrendingMovies();
-  },[]);
-
+ 
   return (
     <main>
       <div className="pattern"/>
