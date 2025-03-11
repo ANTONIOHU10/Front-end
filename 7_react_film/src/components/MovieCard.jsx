@@ -7,6 +7,7 @@ const MovieCard = ({movie:{title, vote_average, poster_path, release_date,origin
         <img src ={poster_path ? 
             `https://image.tmdb.org/t/p/w500/${poster_path}` : '/src/assets/no-movie.png'
         }
+        
             alt={title}
         />
 
