@@ -50,7 +50,7 @@ const App = () => {
         setMovieList([]);
         return;
       }
-
+      
       // [] = if there are no data found
       setMovieList(data.results || []);
 
